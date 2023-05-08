@@ -1,15 +1,15 @@
 # Helical
 Helical is a 16-voice polyphonic Autoregressive Algorithmic Synthesizer.  
-With Autoregressive Synthesis, it continuously generates infinitely new phrases.  
-Each of the 16 voices consists of an independent wavetable oscillator, envelope generator, and VCA.  
+With Autoregressive Synthesis/Sequence, it continuously generates infinitely new phrases.  
+Each of the 16 voices consists of an independent sequencer, wavetable oscillator, envelope generator, and VCA.  
 Users can change the scale and LED color with a dedicated editor, and wavetables can be modified using Synthesis Technology's WaveEdit.
 
 [![helical demo](http://img.youtube.com/vi/5pqRVQMexkI/0.jpg)](https://www.youtube.com/watch?v=5pqRVQMexkI)
 
 
 
-# Autoregressive Synthesis  
-Autoregressive Synthesis is an original synthesis method that refers to its past parameters to determine the next parameters.  
+# Autoregressive Synthesis/Sequence
+Autoregressive Synthesis/Sequence is an original synthesis/sequence method that refers to its past parameters to determine the next parameters.  
 In Helical, the past pitch of each oscillator affects the next duration, and the past duration affects the next pitch, creating a helical change. By connecting to the past in a helical relationship, the sound is not completely random, but rather generates an organic sound.  
 
 <img src="ManualData/autoregressiveImage.jpg" width="100%">  
@@ -88,7 +88,7 @@ Please refer to the pdf included with the Helical Scale Editor.
 Width : 16HP  
 Max Depth: 40mm  
 Maximum current draw:
-* 200mA @12V
+* 220mA @12V
 * 12mA @-12V
   
 Audio codec: 48kHz/24bit  
