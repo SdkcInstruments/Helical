@@ -1,16 +1,14 @@
 # Helical
 Helical is a 16-voice polyphonic Autoregressive Algorithmic Synthesizer.  
-With Autoregressive Synthesis/Sequence, it continuously generates infinitely new phrases.  
-Each of the 16 voices consists of an independent sequencer, wavetable oscillator, envelope generator, and VCA.  
+With Autoregressive Synthesis/Sequence, it continuously generates new phrases.  
+Each of the 16 voices consists of a sequencer, wavetable oscillator, envelope generator, and VCA.  
 Users can change the scale and LED color with a dedicated editor, and wavetables can be modified using Synthesis Technology's WaveEdit.
 
 [![helical demo](http://img.youtube.com/vi/5pqRVQMexkI/0.jpg)](https://www.youtube.com/watch?v=5pqRVQMexkI)
 
-
-
 # Autoregressive Synthesis/Sequence
-Autoregressive Synthesis/Sequence is an original synthesis/sequence method that refers to its past parameters to determine the next parameters.  
-In Helical, the past pitch of each oscillator affects the next duration, and the past duration affects the next pitch, creating a helical change. By connecting to the past in a helical relationship, the sound is not completely random, but rather generates an organic sound.  
+Autoregressive Synthesis/Sequence is an original method that refers to its past parameters to determine the next parameters.  
+In Helical, the past pitch of each oscillator affects the next duration, and the past duration affects the next pitch. By connecting to the past in a helical relationship, the sound is not completely random, but rather generates an organic sound.  
 
 <img src="ManualData/autoregressiveImage.jpg" width="100%">  
 
@@ -22,14 +20,14 @@ New pitch and duration calculations when the envelope reaches its end.
 
 The progression of autoregression generates the envelope and pitch flow shown in the figure above.
 
-Helical is designed to generate new beats and rhythms beyond existing music theory by calculating duration independent of tempo and BPM. (It is possible to synchronize to an external clock by using the Poly function.)
+Helical is designed to generate new rhythms beyond existing music theory by calculating duration independent of tempo and BPM. (It is possible to synchronize to an external clock by using the Poly function.)
 
 # Diagrams
 <img src="ManualData/HelicalDiagram.jpg" width="100%">  
 
 # Controls
 ### Poly
-* Set the polyphony of each LR output from 0 to 8.   
+* Set the polyphony of each Arc/Orbit output from 0 to 8.   
 Lowering the Poly setting rapidly does not immediately silence the sound; the unit processing stops when each unit's envelope reaches end. When raising the Poly, the envelope starts when the unit turns on, allowing synchronization with an external clock by setting the knob to 0 and inputting a Clock signal into Poly CV in.
 
 ### Root
@@ -56,7 +54,7 @@ At both edges of the knob, the curve changes from linear to log curve.
 Envelope changes are not applied until the envelope reaches its end.
 
 ### re(L)oad / (R)eload
-* Forcibly recalculates the parameters for each Unit in the left and right channels.  
+* Forcibly recalculates the parameters for each Unit in the Arc and Orbit channels.  
 Regardless of the number of polyphonies, the duration and pitch of all units are recalculated.  
 Patching 5V Gate enables external control.
 
