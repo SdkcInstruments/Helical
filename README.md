@@ -1,8 +1,14 @@
+
 # Helical
+
 Helical is a 16-voice polyphonic Autoregressive Algorithmic Synthesizer.  
 With Autoregressive Synthesis/Sequence, it continuously generates new phrases.  
 Each of the 16 voices consists of a sequencer, wavetable oscillator, envelope generator, and VCA.  
-Users can change the scale and LED color with a dedicated editor, and wavetables can be modified using Synthesis Technology's WaveEdit.
+Users can change the scale and LED color with a dedicated editor, and wavetables can be modified using Synthesis Technology's WaveEdit.  
+
+<div style="text-align: center">
+    <img src="ManualData/HelicalPanel.png" width="30%">
+</div>
 
 [![helical demo](http://img.youtube.com/vi/5pqRVQMexkI/0.jpg)](https://www.youtube.com/watch?v=5pqRVQMexkI)
 
@@ -26,8 +32,13 @@ Helical is designed to generate new rhythms beyond existing music theory by calc
 <img src="ManualData/HelicalDiagram.jpg" width="100%">  
 
 # Controls
+
+<div style="text-align: center">
+    <img src="ManualData/HelicalPanel.png" width="30%">
+</div>
+
 ### Poly
-* Set the polyphony of each Arc/Orbit output from 0 to 8.   
+* Set the polyphony of each Arc/Orbit output from 0 to 8.  
 Lowering the Poly setting rapidly does not immediately silence the sound; the unit processing stops when each unit's envelope reaches end. When raising the Poly, the envelope starts when the unit turns on, allowing synchronization with an external clock by setting the knob to 0 and inputting a Clock signal into Poly CV in.
 
 ### Root
