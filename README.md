@@ -64,7 +64,7 @@ The duration is determined by (√pitch) * Helical, with a change range of 0.002
 At both edges of the knob, the curve changes from linear to log curve.  
 Envelope changes are not applied until the envelope reaches its end.
 
-### re(L)oad / (R)eload
+### reloAd / relOad
 * Forcibly recalculates the parameters for each Unit in the Arc and Orbit channels.  
 Regardless of the number of polyphonies, the duration and pitch of all units are recalculated.  
 Patching 5V Gate enables external control.
