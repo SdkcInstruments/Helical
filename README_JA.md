@@ -115,6 +115,13 @@ ScaleEditのページを参照してください。
 
 # Update firmware
 
+Helicalは公式のファームウェア以外の対応は行いません。  
+非公式のDaisyのファームウェアを書き込んだことによって起きた故障は、保証の対象外となります。
+
+HelicalのGitHubのページからファームウェア（binファイル）をダウンロードしてください。  
+<a href = "https://electro-smith.github.io/Programmer/">Daisy Web Programmer</a> のページに移動し、記載されている手順に従ってファームウェアをアップロードしてください。  
+DaisySeedからUSBケーブルを抜いた後、ユーロラックケースの電源を入れて、ファームウェアのアップデートが正常に行われているか確認してください。  
+Helicalの背面にあるシリアル番号が6から55の場合、出荷時のファームウェアはv1.1です。
 
 # Specification
 Width : 16HP  
@@ -130,3 +137,11 @@ CV input range: +/- 5V (depends on the knob position)
 # Roadmap
 * エクスパンダーの開発(SVFフィルターがそれぞれのオシレーターユニットに搭載されます。)
 * ScaleEditor上でMicroTuning(微分音)のScaleを作れる様にします。
+
+
+# Acknowledgment
+以下の人々の助けがなければHelicalは完成しませんでした。  
+心からの感謝を捧げます。  
+* <a href = "https://hananosuke.jp/">Hananosuke Takimoto</a>
+* Tanipoyo
+* <a href = "https://www.bofo.jp/">Tajima Yoshimi(Cloud Design on the panel)</a>
