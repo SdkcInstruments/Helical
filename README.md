@@ -73,6 +73,20 @@ Patching 5V Gate enables external control.
 * Even when the envelope reaches end, the duration and pitch are not recalculated, and the current state is looped.   
 Patching the 5V Gate will lock when the Gate is HIGH.
 
+# Function
+### Volume Edit
+* By pressing and holding the Scale knob and the left reload button, then turning the Scale knob, you can adjust the default volume.   
+This change is saved to the SD card and will persist after the device is restarted.
+
+### Fine Tuning
+* By pressing and holding the Scale knob and the right reload button, then turning the Scale knob, you can adjust the fine tuning.   
+This change is saved to the SD card and will persist after the device is restarted.
+
+### LED Brightness
+* By pressing and holding the Scale knob and the right and light reload button, then turning the Scale knob, you can adjust the LED Brightness.   
+This change is saved to the SD card and will persist after the device is restarted.  
+If your case doesn't provide enough power, you can reduce power consumption by adjusting the LED brightness.
+
 # Wavetable Edit
 Synthesis Technology's <a href="https://synthtech.com/waveedit/">Wave Edit</a> can be used to create original presets of wavetables.  
 Rename the exported wav file to buf_wt.wav and write it to the SD card.
