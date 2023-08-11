@@ -105,7 +105,14 @@ If you are using other software, please create a wav file with a table size of 2
 Please refer to the pdf included with the Helical Scale Editor.
 
 # Update firmware
+Helical does not support anything other than the official firmware.  
+Any malfunctions that occur as a result of writing unofficial firmware will not be covered by the warranty.
 
+
+Please download the firmware (bin file) from Helical's GitHub page.  
+Go to the <a href = "https://electro-smith.github.io/Programmer/">Daisy Web Programmer</a> page and follow the instructions provided to upload the firmware.  
+After unplugging the USB cable from DaisySeed, turn on the power to the Eurorack case and check to see if the firmware update has been carried out correctly.  
+For Helical units with a serial number on the back ranging from 6 to 55, the shipping firmware version is v1.1.
 
 # Specification
 Width : 16HP  
@@ -123,3 +130,10 @@ CV input range: +/- 5V (depends on the knob position)
 * Support for 8+ wavetable presets from multiple wav files.
 * Support for 10+ scale presets.
 * Support for Micro Tuning.
+
+# Acknowledgment
+Without the help of the following people, Helical would not have been completed.  
+I offer my heartfelt thanks
+* <a href = "https://hananosuke.jp/">Hananosuke Takimoto</a>
+* Tanipoyo
+* <a href = "https://www.bofo.jp/">Tajima Yoshimi(Cloud Design on the panel)</a>
