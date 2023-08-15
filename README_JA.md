@@ -121,7 +121,7 @@ Helicalは公式のファームウェア以外の対応は行いません。
 HelicalのGitHubのページからファームウェア（binファイル）をダウンロードしてください。  
 <a href = "https://electro-smith.github.io/Programmer/">Daisy Web Programmer</a> のページに移動し、記載されている手順に従ってファームウェアをアップロードしてください。  
 DaisySeedからUSBケーブルを抜いた後、ユーロラックケースの電源を入れて、ファームウェアのアップデートが正常に行われているか確認してください。  
-Helicalの背面にあるシリアル番号が6から55の場合、出荷時のファームウェアはv1.1です。
+Helicalの背面にあるシリアル番号が6から55の場合、出荷時のファームウェアはv1.11です。
 
 # Specification
 Width : 16HP  
