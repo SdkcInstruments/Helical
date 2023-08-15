@@ -127,7 +127,7 @@ Helicalの背面にあるシリアル番号が6から55の場合、出荷時の�
 Width : 16HP  
 Max Depth: 40mm  
 Maximum current draw:
-* 220mA @12V
+* 240mA @12V
 * 12mA @-12V
   
 Audio codec: 48kHz/24bit  
@@ -144,4 +144,4 @@ CV input range: +/- 5V (depends on the knob position)
 心からの感謝を捧げます。  
 * <a href = "https://hananosuke.jp/">Hananosuke Takimoto</a>
 * Tanipoyo
-* <a href = "https://www.bofo.jp/">Tajima Yoshimi(Cloud Design on the panel)</a>
+* <a href = "https://www.bofo.jp/">Yoshimi Tajima(Cloud Design on the panel)</a>

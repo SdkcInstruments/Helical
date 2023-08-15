@@ -118,7 +118,7 @@ For Helical units with a serial number on the back ranging from 6 to 55, the shi
 Width : 16HP  
 Max Depth: 40mm  
 Maximum current draw:
-* 220mA @12V
+* 240mA @12V
 * 12mA @-12V
   
 Audio codec: 48kHz/24bit  
@@ -136,4 +136,4 @@ Without the help of the following people, Helical would not have been completed.
 I offer my heartfelt thanks
 * <a href = "https://hananosuke.jp/">Hananosuke Takimoto</a>
 * Tanipoyo
-* <a href = "https://www.bofo.jp/">Tajima Yoshimi(Cloud Design on the panel)</a>
+* <a href = "https://www.bofo.jp/">Yoshimi Tajima(Cloud Design on the panel)</a>
