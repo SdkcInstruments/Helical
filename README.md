@@ -112,7 +112,7 @@ Any malfunctions that occur as a result of writing unofficial firmware will not 
 Please download the firmware (bin file) from Helical's GitHub page.  
 Go to the <a href = "https://electro-smith.github.io/Programmer/">Daisy Web Programmer</a> page and follow the instructions provided to upload the firmware.  
 After unplugging the USB cable from DaisySeed, turn on the power to the Eurorack case and check to see if the firmware update has been carried out correctly.  
-For Helical units with a serial number on the back ranging from 6 to 55, the shipping firmware version is v1.11.
+For Helical units with a serial number on the back from 6 to 55, the shipping firmware version is v1.11.
 
 # Specification
 Width : 16HP  
