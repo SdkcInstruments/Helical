@@ -111,7 +111,7 @@ Wave Editのより詳細な説明や使い方については<a href="https://syn
 もし他のソフトウェアやプログラムを使用する場合は、256sample、64テーブルの計16384sampleのwavファイルを書き出して、buf_wt.wavとリネームし、SDカードに上書きしてください。
 
 # Scale Edit
-ScaleEditのページを参照してください。
+<a href = "https://github.com/SdkcInstruments/Helical/tree/main/ScaleEditor">ScaleEditor</a>のページを参照してください。
 
 # Update firmware
 
