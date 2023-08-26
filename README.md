@@ -39,7 +39,10 @@ Helical is designed to generate new rhythms beyond existing music theory by calc
 
 ### Poly
 * Set the polyphony of each Arc/Orbit output from 0 to 8.  
-Lowering the Poly setting rapidly does not immediately silence the sound; the unit processing stops when each unit's envelope reaches end. When raising the Poly, the envelope starts when the unit turns on, allowing synchronization with an external clock by setting the knob to 0 and inputting a Clock signal into Poly CV in.
+Lowering the Poly setting rapidly does not immediately silence the sound; the unit processing stops when each unit's envelope reaches end. When raising the Poly, the envelope starts when the unit turns on.  
+By utilizing this feature, you can achieve synchronization with an external clock by setting the Poly knob to 0 and connecting a Clock or Gate to the CV in. In this case, the Helicity knob functions like a Clock Divider.   
+Sending very short Clock/Gate signals will make it easier to understand the synchronization with the external source. Additionally, passing the Clock/Gate signal through an attenuverter first allows you to control the number of notes played.
+
 
 ### Root
 * Set the root note. V/OCT tracking may become unstable outside the 1-5V range.
@@ -102,7 +105,7 @@ If you are using other software, please create a wav file with a table size of 2
 48kHz/24bit is recommended.
 
 # Scale Edit
-Please refer to the pdf included with the Helical Scale Editor.
+Please refer to the <a href = "https://github.com/SdkcInstruments/Helical/tree/main/ScaleEditor">ScaleEditor</a> page.
 
 # Update firmware
 Helical does not support anything other than the official firmware.  
