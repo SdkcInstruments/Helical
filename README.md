@@ -7,10 +7,15 @@ Each of the 16 voices consists of a sequencer, wavetable oscillator, envelope ge
 Users can change the scale and LED color with a dedicated editor, and wavetables can be modified using Synthesis Technology's WaveEdit.  
 
 <div style="text-align: center">
-    <img src="ManualData/HelicalPanel.png" width="30%">
+    <img src="ManualData/helical_panel.png" width="30%">
 </div>
+<div style="text-align: center">
 
 [![helical demo](http://img.youtube.com/vi/5pqRVQMexkI/0.jpg)](https://www.youtube.com/watch?v=5pqRVQMexkI)
+
+</div>
+
+<div style="page-break-before:always"></div>
 
 # Autoregressive Synthesis/Sequence
 Autoregressive Synthesis/Sequence is an original method that refers to its past parameters to determine the next parameters.  
@@ -28,8 +33,12 @@ The progression of autoregression generates the envelope and pitch flow shown in
 
 Helical is designed to generate new rhythms beyond existing music theory by calculating duration independent of tempo and BPM. (It is possible to synchronize to an external clock by using the Poly function.)
 
+<div style="page-break-before:always"></div>
+
 # Diagrams
 <img src="ManualData/HelicalDiagram.jpg" width="100%">  
+
+<div style="page-break-before:always"></div>
 
 # Controls
 
@@ -51,6 +60,8 @@ Sending very short Clock/Gate signals will make it easier to understand the sync
 
 ### Glide
 * Set the transition time when changing to the next pitch. Applies to all pitch changes, including changes in Scale and Root.
+
+<div style="page-break-before:always"></div>
 
 ### Spread
 * Set the width of change when converting from duration to pitch. With CCW, the pitch becomes only Root, and with CW, it changes from the frequency of Root to G9 (12543.9Hz).
@@ -76,6 +87,8 @@ Patching 5V Gate enables external control.
 * Even when the envelope reaches end, the duration and pitch are not recalculated, and the current state is looped.   
 Patching the 5V Gate will lock when the Gate is HIGH.
 
+<div style="page-break-before:always"></div>
+
 # Function
 ### Volume Edit
 * By pressing and holding the Scale knob and the left reload button, then turning the Scale knob, you can adjust the default volume.   
@@ -89,6 +102,8 @@ This change is saved to the SD card and will persist after the device is restart
 * By pressing and holding the Scale knob and the right and light reload button, then turning the Scale knob, you can adjust the LED Brightness.   
 This change is saved to the SD card and will persist after the device is restarted.  
 If your case doesn't provide enough power, you can reduce power consumption by adjusting the LED brightness.
+
+<div style="page-break-before:always"></div>
 
 # Wavetable Edit
 Synthesis Technology's <a href="https://synthtech.com/waveedit/">Wave Edit</a> can be used to create original presets of wavetables.  
@@ -104,8 +119,11 @@ For more information on how to use Wave Edit, please refer to the  <a href="http
 If you are using other software, please create a wav file with a table size of 256sample, 64 types, total 16384samle, and rename it buf_wt.wav and write it to the SD card.  
 48kHz/24bit is recommended.
 
+
 # Scale Edit
 Please refer to the <a href = "https://github.com/SdkcInstruments/Helical/tree/main/ScaleEditor">ScaleEditor</a> page.
+
+<div style="page-break-before:always"></div>
 
 # Update firmware
 Helical does not support anything other than the official firmware.  
@@ -116,6 +134,7 @@ Please download the firmware (bin file) from Helical's GitHub page.
 Go to the <a href = "https://electro-smith.github.io/Programmer/">Daisy Web Programmer</a> page and follow the instructions provided to upload the firmware.  
 After unplugging the USB cable from DaisySeed, turn on the power to the Eurorack case and check to see if the firmware update has been carried out correctly.  
 For Helical units with a serial number on the back from 6 to 55, the shipping firmware version is v1.11.
+
 
 # Specification
 Width : 16HP  
@@ -129,7 +148,6 @@ Control rate: audio-rate for the Helicity knob, 1kHz for the another CV inputs.
 CV input range: +/- 5V (depends on the knob position)
 
 # Roadmap
-* Development of an Expander that allows to control SVF filters. (Almost completed)
 * Support for 8+ wavetable presets from multiple wav files.
 * Support for 10+ scale presets.
 * Support for Micro Tuning.

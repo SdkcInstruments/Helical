@@ -7,7 +7,7 @@ Helicalは自己回帰型シンセシス(Autoregressive Algorithmic Synthesizer)
 
 
 <div style="text-align: center">
-    <img src="ManualData/HelicalPanel.png" width="30%">
+    <img src="ManualData/helical_panel.png" width="30%">
 </div>
 
 [![helical demo](http://img.youtube.com/vi/5pqRVQMexkI/0.jpg)](https://www.youtube.com/watch?v=5pqRVQMexkI)
@@ -35,7 +35,7 @@ Helicalは既存の音楽のリズムの概念(BPMから音価を決定する)�
 # Controls and Outputs
 
 <div style="text-align: center">
-    <img src="ManualData/HelicalPanel.png" width="30%">
+    <img src="ManualData/helical_panel.png" width="30%">
 </div>
 
 ### Arc/Orbit
@@ -55,8 +55,8 @@ Orbitアウトに何も接続されていない場合はMonoモードとなり�
 * 使用するスケールとWavetableを設定します。スケールの変更はノブを回す事で、Wavetableの変更はノブを押しこみながら回す事で変更が可能です。  
   
 reloAd(左下のリロードボタン)を押しながらScaleノブを押し込み、回すことで、デフォルトの音量を設定する事ができます。
-relOad(右下のリロードボタン)を押しながらScaleノブを押し込み、回すことで、FineTuneを設定する事ができます。(2022年7月13日時点では未実装)
-これらの設定は次回起動じも引き継がれます。(2022年7月13日時点では未実装)
+relOad(右下のリロードボタン)を押しながらScaleノブを押し込み、回すことで、FineTuneを設定する事ができます。
+これらの設定は次回起動じも引き継がれます。
 
 
 ### Glide
@@ -135,7 +135,6 @@ Control rate: audio-rate for the Helicity knob, 1kHz for the another CV inputs.
 CV input range: +/- 5V (depends on the knob position)
 
 # Roadmap
-* エクスパンダーの開発(SVFフィルターがそれぞれのオシレーターユニットに搭載されます。)
 * ScaleEditor上でMicroTuning(微分音)のScaleを作れる様にします。
 
 
