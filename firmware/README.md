@@ -9,3 +9,8 @@
 
 ## v1.11
 ・<b>release</b>
+
+# How to update
+<a href="https://github.com/SdkcInstruments/Helical/tree/main#update-firmware">Helical Firmware update(ENG)</a>
+
+<a href="https://github.com/SdkcInstruments/Helical/blob/main/README_JA.md#update-firmware">Helical Firmware update(JA)</a>
