@@ -158,3 +158,8 @@ I offer my heartfelt thanks
 * <a href = "https://hananosuke.jp/">Hananosuke Takimoto</a>
 * Tanipoyo
 * <a href = "https://www.bofo.jp/">Yoshimi Tajima(Cloud Design on the panel)</a>
+
+# Contact
+Please contact support at the following address. Replace "a" with "@" in the address.
+
+sdkc.store[a]gmail.com
