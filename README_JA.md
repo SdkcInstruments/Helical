@@ -144,3 +144,8 @@ CV input range: +/- 5V (depends on the knob position)
 * <a href = "https://hananosuke.jp/">Hananosuke Takimoto</a>
 * Tanipoyo
 * <a href = "https://www.bofo.jp/">Yoshimi Tajima(Cloud Design on the panel)</a>
+
+# Contact
+下記のアドレスにご連絡ください。[a]を@に置き換えてください。
+
+sdkc.store[a]gmail.com

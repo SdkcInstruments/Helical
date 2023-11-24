@@ -68,3 +68,8 @@ Maximum current draw:
 * 0mA @-12V
 
 CV input range: +/- 5V (depends on the knob position)
+
+# Contact
+下記のアドレスにご連絡ください。[a]を@に置き換えてください。
+
+sdkc.store[a]gmail.com
