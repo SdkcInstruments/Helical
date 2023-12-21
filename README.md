@@ -56,7 +56,29 @@ Sending very short Clock/Gate signals will make it easier to understand the sync
 ### Root
 * Set the root note. V/OCT tracking may become unstable outside the 1-5V range.
 ### Scale
-* Sets the scale to be used. You can change the wavetable preset by turning the knob while pressing the encoder in.
+* Sets the scale to be used. You can change the wavetable preset by turning the knob while pressing the encoder in.  
+* By pressing and holding the reloAd button (the reload button on the bottom left) while pushing and turning the Scale knob, you can set the default volume.
+* By pressing and holding the relOad button (the reload button on the bottom right) while pushing and turning the Scale knob, you can set the FineTune.
+* By pressing and holding relOad or reloAd and then pushing and turning the Scale knob, you can adjust the maximum brightness of the LED.   
+  These settings will be carried over to the next startup.  
+
+  
+The default scale presets are below.  
+
+    0,Major(R)  
+    1,Natural Minor (R)  
+    2,Harmonic Minor(R)  
+    3,Melodic Minor(R)  
+    4,Dorian(R)  
+    5,Major Pentatonic(R)  
+    6,Minor Pentatonic(R)  
+    7,Chromatic Scale  
+    8,1M7(R)  
+    9,4M7(R)  
+    (R) means Root Emphasize is on 
+    When Root Emphasize is turned on, only the Root note and the fifth note are selected in the lowest octave.  
+    This function helps maintain the sense of scale.   
+    Please refer to the Scale Editor for more details.
 
 ### Glide
 * Set the transition time when changing to the next pitch. Applies to all pitch changes, including changes in Scale and Root.

@@ -54,9 +54,25 @@ Orbitアウトに何も接続されていない場合はMonoモードとなり�
 ### Scale
 * 使用するスケールとWavetableを設定します。スケールの変更はノブを回す事で、Wavetableの変更はノブを押しこみながら回す事で変更が可能です。  
   
-reloAd(左下のリロードボタン)を押しながらScaleノブを押し込み、回すことで、デフォルトの音量を設定する事ができます。
-relOad(右下のリロードボタン)を押しながらScaleノブを押し込み、回すことで、FineTuneを設定する事ができます。
-これらの設定は次回起動じも引き継がれます。
+    reloAd(左下のリロードボタン)を押しながらScaleノブを押し込み、回すことで、デフォルトの音量を設定する事ができます。  
+    relOad(右下のリロードボタン)を押しながらScaleノブを押し込み、回すことで、FineTuneを設定する事ができます。
+    これらの設定は次回起動じも引き継がれます。
+
+デフォルトのスケールプリセットは以下になります。 
+
+    0,Major(R)  
+    1,Natural Minor (R)  
+    2,Harmonic Minor(R)  
+    3,Melodic Minor(R)  
+    4,Dorian(R)  
+    5,Major Pentatonic(R)  
+    6,Minor Pentatonic(R)  
+    7,Chromatic Scale  
+    8,1M7(R)  
+    9,4M7(R)  
+    (R) Root Emphasizeがオンになっています。
+    Root Emphasizeがonになると、一番下のオクターブはRootと5度上の音のみが選択されます。
+    より詳細はScale Editorを参考にしてください。
 
 
 ### Glide
