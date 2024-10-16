@@ -162,7 +162,7 @@ CV input range: +/- 5V (depends on the knob position)
 * Tanipoyo
 * <a href = "https://www.bofo.jp/">Yoshimi Tajima(Cloud Design on the panel)</a>
 
-# Sdkc Instruments Warranty
+# Warranty
 
 Sdkc Instrumentsは、本製品の購入日から1年間、材料および製造上の欠陥がないことを保証します（購入証明書や領収書が必要です）。
 
