@@ -181,7 +181,7 @@ I offer my heartfelt thanks
 * Tanipoyo
 * <a href = "https://www.bofo.jp/">Yoshimi Tajima(Cloud Design on the panel)</a>
 
-# Sdkc Instruments Warranty
+#  Warranty
 
 Sdkc Instruments provides a one-year warranty for this product, ensuring it is free from defects in materials and construction from the date of purchase (proof of purchase/invoice required).
 
