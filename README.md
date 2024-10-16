@@ -181,6 +181,19 @@ I offer my heartfelt thanks
 * Tanipoyo
 * <a href = "https://www.bofo.jp/">Yoshimi Tajima(Cloud Design on the panel)</a>
 
+# Sdkc Instruments Warranty
+
+Sdkc Instruments provides a one-year warranty for this product, ensuring it is free from defects in materials and construction from the date of purchase (proof of purchase/invoice required).
+
+Malfunctions caused by incorrect power supply voltages, backward or reversed Eurorack bus board cable connections, misuse of the product, removing knobs, changing faceplates, unauthorized modifications (including unofficial firmware updates), or any other causes determined by Sdkc Instruments to be the fault of the user are not covered by this warranty, and normal service rates will apply.
+
+Damage caused by exposure to extreme environmental conditions (such as excessive heat, moisture, or humidity) is also not covered by this warranty.
+
+For warranty service, please contact the retailer where you purchased the product. In the case of a defect covered by this warranty, Sdkc Instruments will repair or replace the product. 
+
+Sdkc Instruments shall not be liable for any injury to persons or damage to property resulting from the use or misuse of this product. For any questions, please contact sdkc.store[a]gmail.com or your dealer.
+
+
 # Contact
 Please contact support at the following address. Replace "a" with "@" in the address.
 
