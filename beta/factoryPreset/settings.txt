@@ -1,0 +1,6 @@
+finetune 0
+scale 5
+wavetable 2
+volCenter 71
+volWidth 100
+chromaticMode 1
