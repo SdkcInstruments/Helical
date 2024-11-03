@@ -146,7 +146,7 @@ Wave Editのより詳細な説明や使い方については<a href="https://syn
 # Dynamics Setting
 新しい音を発音する際に、音量を指定した範囲の中からランダムで設定する機能です。   
 ### 設定方法
-1. SclaeKnobをダブルクリックして、DynamicSettingModeに入ります。  
+1. ScaleKnobをダブルクリックして、DynamicSettingModeに入ります。  
 (LEDが高速で点滅します)
 1. reloAd(左下のボタン)を押しながらScaleノブを回転させることで、音量の範囲の中心を設定します。
 2. reLoad(右下のボタン)を押しながらScaleノブを回転させることで、音量の幅を設定します。
@@ -215,9 +215,15 @@ minとmaxは最終的な処理で反転されるので、minの方が値が大�
 Helicalは公式のファームウェア以外の対応は行いません。  
 非公式のDaisyのファームウェアを書き込んだことによって起きた故障は、保証の対象外となります。
 
-Helicalの<a href = "https://github.com/SdkcInstruments/Helical/tree/main/firmware">GitHubのページ</a>からファームウェア（binファイル）をダウンロードしてください。  
+Helicalの<a href = "https://github.com/SdkcInstruments/Helical/blob/main/beta/helical_firmware_v2.01.bin">GitHubのページ</a>からファームウェア（binファイル）をダウンロードしてください。  
+**その際右クリックで保存ではなく、 Download Raw Fileからダウンロードを行なってください。**  
+
 <a href = "https://electro-smith.github.io/Programmer/">Daisy Web Programmer</a> のページに移動し、記載されている手順に従ってファームウェアをアップロードしてください。  
+
+正しく書き込めている場合、Wrote 129828 bytesと表示されます。数字が異なっている場合、ダウンロードしたファイルが間違っている可能性があります。Download raw fileからダウンロードし直してください。
+
 DaisySeedからUSBケーブルを抜いた後、ユーロラックケースの電源を入れて、ファームウェアのアップデートが正常に行われているか確認してください。  
+
 Helicalの背面のシリアルが358以降の場合出荷時のファームウェアはv2.01です。
 
 # Troubleshooting
