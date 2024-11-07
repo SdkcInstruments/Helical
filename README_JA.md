@@ -1,3 +1,16 @@
+# Manual v2.01
+MIDI Expander "Cuh"の為のMIDI機能を追加しました。  
+その他ダイナミクスの設定/キャリブレーションなど様々な機能が追加されています。
+アップデートの方法については[こちら](#update-firmware)を参照してください。
+
+# ChangeLog
+1. MIDI Output機能を追加しました。[詳細](#midi-output)
+2. default volumeとbrightnessの設定機能を削除しました。
+3. Dynamix Settingを追加しました。[詳細](#dynamics-setting)
+4. Scaleを変更した際の挙動を変更しました。[詳細](#scale)
+5. Clibration Modeを追加しました。[詳細](#calibration-mode)
+6. SDカードの読み込みエラー時の挙動を追加しました。[詳細](#troubleshooting)
+7. USB電源のみが接続されている場合、Helicalを起動させない様にしました。
 
 # Helical
 Helicalは自己回帰型シンセシス(Autoregressive Algorithmic Synthesizer)により構成された16音ポリフォニックシンセサイザーです。  
@@ -30,7 +43,8 @@ Helicalは既存の音楽のリズムの概念(BPMから音価を決定する)�
 (後述のPolyノブのCVに外部クロックを接続することにより、外部クロックとの同期もできます。)
 
 # Diagrams
-<img src="ManualData/HelicalDiagram.jpg" width="100%">  
+<img src="ManualData/HelicalDiagram.jpg" width="100%">    
+
 
 # Controls and Outputs
 
@@ -50,14 +64,14 @@ Orbitアウトに何も接続されていない場合はMonoモードとなり�
 この特性を利用して、Polyノブを0にし、CVinにClockを接続する事で、外部のクロックと同期が可能になります。この場合HelicityノブはClockDividerの様な機能を持ちます。
 
 ### Root
-* ルート音を設定します。1-5vのレンジ外ではV/OCTのトラッキングが不安定になる場合があります。
+* ルート音を設定します。1-5vのレンジ外ではV/OCTのトラッキングが不安定になる場合があります。Chromatic Modeがオンの場合、発音が終わるまでRootの値は反映されません。
 ### Scale
 * 使用するスケールとWavetableを設定します。スケールの変更はノブを回す事で、Wavetableの変更はノブを押しこみながら回す事で変更が可能です。  
   
-* reloAd(左下のリロードボタン)を押しながらScaleノブを押し込み、回すことで、デフォルトの音量を設定する事ができます。  
+  - Lockしている場合は直ぐにScaleの変更が反映されますが、Lockしていない場合は発音が終わり次第、現在のScaleが反映された音高になります。
+  
 * relOad(右下のリロードボタン)を押しながらScaleノブを押し込み、回すことで、FineTuneを設定する事ができます。  
-* relOad,reloAdを推しながらScaleノブを押し込み、回すことで、LEDの最大の明るさを調整することができます。  
-    これらの設定は次回起動じも引き継がれます。
+* Scale,Wavetable,Finetuneの設定は次回起動時も引き継がれます。
 
 デフォルトのスケールプリセットは以下になります。 
 
@@ -112,7 +126,6 @@ CCWでRootで設定された音のみ、CWでRootからG9までの幅が適応�
 
 * エンベロープが最後間で到達しても、音高と音価の計算を行わないスイッチです。
   
-Gateを接続することで、GateがHIGHの時はロックされます。
 
 # Wavetable Edit
 Synthesis Technologyの<a href="https://synthtech.com/waveedit/">Wave Edit</a>を使用して、オリジナルのwavetableのプリセットを作る事ができます。
@@ -130,6 +143,73 @@ Wave Editのより詳細な説明や使い方については<a href="https://syn
 # Scale Edit
 <a href = "https://github.com/SdkcInstruments/Helical/tree/main/ScaleEditor">ScaleEditor</a>のページを参照してください。
 
+# Dynamics Setting
+新しい音を発音する際に、音量を指定した範囲の中からランダムで設定する機能です。   
+### 設定方法
+1. SclaeKnobをダブルクリックして、DynamicSettingModeに入ります。  
+(LEDが高速で点滅します)
+1. reloAd(左下のボタン)を押しながらScaleノブを回転させることで、音量の範囲の中心を設定します。
+2. reLoad(右下のボタン)を押しながらScaleノブを回転させることで、音量の幅を設定します。
+3. Scaleノブをクリックすることで通常のModeに戻ります。
+- 大まかな範囲はHelical本体のLEDに表示されます。もし正確な値に調整したい場合はSDカード内のsetting.txtファイルをPC等で開き、volCenterとvolWidthに0-100の値を記入してください。単位は%です。  
+  SDカードのedit可能パラメーターについてはこちら。
+- MIDI出力のベロシティは0-127にリマップした値が反映されます。
+
+
+# Chromatic Mode
+ScaleKnobを押し込みながら起動することで、ChromaticModeの設定が切り替わります。v2.01以降のデフォルトはChromaticModeがオンになっています。
+
+SDカードのsetting.txtのchromaticModeを0/1にする事で指定することも可能です。
+
+# MIDI Output
+Helical背面のUSB MicroB端子にUSBケーブル接続することで、HelicalはMIDI Deviceとして動作し、ノート情報および全てのつまみとLockSwitchのCCを出力します。  
+<span style="color: red; ">
+Cuh(MIDI Expander)を使用せず、過電流などにより故障した場合は保証対象外になります。(CuhはUSBHostからの電源をカットしています。)</span>  
+Cuhのリンクを貼る。
+
+# Calibration Mode
+以下の方法で全てのKnobとCV入力をキャリブレーションする事ができます。  
+1. 電源をオフにし、全てのパッチケーブルを抜いて下さい。  
+2. reLoadボタンと、Reloadボタンを押しながら電源を入れ、左のLEDが赤に光ったら手を離して下さい。  
+3. 全てのつまみをCCWの位置に設定します。  
+4. reLoadボタン(左下のボタン)を押して離します。  
+5. 右のLEDが赤く光ったら、全てのつまみをCWの位置に設定します。  
+6. Reloadボタン(右下のボタン)を押して離します。  
+キャリブレーションが成功していれば、Helicalが起動します。もし音が出ない場合は1.に戻ってやり直してください。
+
+# SD Card Edit
+## setting.txt
+setting.txtの内容は全てHelical本体で設定することが出来ますが、SDカードに直接書き込む事で細かな設定を行う事ができます。  
+もしSDカードの中身を書き換えた後に動作がおかしくなった場合は、factoryPreset内にあるtxtをダウンロードし書き直してください。  
+| settingName  | detail |  Range
+| ---- | ---- | ---- |
+| finetune |setFinetune| -32767 ~ 32767 |
+| scale | default Scale Num | 0 ~ 9 |
+| wavetable | default wavetable Num | 0 ~ 9 |
+| volCenter | center volume | 0 ~ 100 |
+| volWidth | random range | 0 ~ 100 |
+| chromaticMode | switch chromatic mode | 0(off) / 1(on) |
+
+### sample
+```setting.txt
+finetune 0
+scale 0
+wavetable 0
+volCenter 75
+volWidth 50
+chromaticMode 1
+```
+
+## calibration.txt
+calibration.txtは人間が編集するのに適したフォーマットではありませんが、calibration.txtを編集することで、ノブの取る値を反転させたり、値の範囲を指定することが出来ます。  
+通常エディットする必要がないファイルなので、以下を理解した上で、狂気的な目的が無い限り、Helical本体でのキャリブレーションをお勧めします。
+
+数値の範囲は0-65536で、以下の順番で配置されています。  
+```calibration.txt
+poly_min root_min glide_min spread_min helicity_min wavetable_min env_min cf_min q_min index_min filtertype_min length_min poly_max root_max glide_max spread_max helicity_max wavetable_max env_max cf_max q_max index_max filtertype_max length_max
+```
+minとmaxは最終的な処理で反転されるので、minの方が値が大きく、maxの方が値が小さい状態が正しい状態です。
+
 # Update firmware
 
 Helicalは公式のファームウェア以外の対応は行いません。  
@@ -138,7 +218,21 @@ Helicalは公式のファームウェア以外の対応は行いません。
 Helicalの<a href = "https://github.com/SdkcInstruments/Helical/tree/main/firmware">GitHubのページ</a>からファームウェア（binファイル）をダウンロードしてください。  
 <a href = "https://electro-smith.github.io/Programmer/">Daisy Web Programmer</a> のページに移動し、記載されている手順に従ってファームウェアをアップロードしてください。  
 DaisySeedからUSBケーブルを抜いた後、ユーロラックケースの電源を入れて、ファームウェアのアップデートが正常に行われているか確認してください。  
-Helicalの背面にあるシリアル番号が6から55の場合、出荷時のファームウェアはv1.11です。
+Helicalの背面のシリアルが358以降の場合出荷時のファームウェアはv2.01です。
+
+# Troubleshooting
+Helicalが起動しない場合以下のチェックをしてください。
+- LEDが赤青緑に光っていますか？  
+    →SDカードを読み込めていません。SDカードが刺さっているか確認してください。
+    それでも起動しない場合は、SDカードの中身をFactoryPresetに差し替えてください。  
+    Todo リンクを貼って、FactoryPresetをアップロードする。
+- LEDが赤白黄に光っていますか？(未実装)  
+    →waveTableが読み込めていません。オリジナルのwavetableを使っている場合、サンプル数が正しいか/ファイル名が"buf_wt.wav"になっているか確認し、再度SDカードに書き込んでください。
+- Firmwareアップデート後起動しなくなりましたか？  
+    → Firmwareのアップデートをもう一度やってみてください。
+- その他の症状  
+    →Daisy(Helical背面のマイコン)の向きを間違えて刺すと故障の原因になります。
+    購入された代理店(直接購入の場合は下のContact)にご連絡下さい。
 
 # Specification
 Width : 16HP  
@@ -150,9 +244,6 @@ Maximum current draw:
 Audio codec: 48kHz/24bit  
 Control rate: audio-rate for the Helicity knob, 1kHz for the another CV inputs.  
 CV input range: +/- 5V (depends on the knob position)
-
-# Roadmap
-* ScaleEditor上でMicroTuning(微分音)のScaleを作れる様にします。
 
 
 # Acknowledgment
