@@ -1,3 +1,5 @@
+### こちらはベータテスト用のファームウェアです。動作に不具合が含まれている可能性があります。アップデートを実施される際は、自己責任でお願い致します。
+### This is a beta version of the firmware. Please note that it may contain bugs or other issues. Proceed with the update at your own risk.
 # Manual v2.01
 MIDI Expander "Cuh"の為のMIDI機能を追加しました。  
 その他ダイナミクスの設定/キャリブレーションなど様々な機能が追加されています。
