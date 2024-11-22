@@ -9,8 +9,10 @@ MIDI Expander "Cuh"の為のMIDI機能を追加しました。
 3. Dynamix Settingを追加しました。[詳細](#dynamics-setting)
 4. Scaleを変更した際の挙動を変更しました。[詳細](#scale)
 5. Clibration Modeを追加しました。[詳細](#calibration-mode)
-6. SDカードの読み込みエラー時の挙動を追加しました。[詳細](#troubleshooting)
-7. USB電源のみが接続されている場合、Helicalを起動させない様にしました。
+6. Glide挙動を変更しました。[詳細](#glide)
+7. SDカードの読み込みエラー時の挙動を追加しました。[詳細](#troubleshooting)
+8. USB電源のみが接続されている場合、Helicalを起動させない様にしました。
+9. GlideがCCWの場合、稀に起動しない問題を修正しました。
 
 # Helical
 Helicalは自己回帰型シンセシス(Autoregressive Algorithmic Synthesizer)により構成された16音ポリフォニックシンセサイザーです。  
@@ -91,8 +93,10 @@ Orbitアウトに何も接続されていない場合はMonoモードとなり�
 
 
 ### Glide
-* それぞれのオシレーターユニットが、次の音高に変更されるさいのポルタメントを設定します。
-
+* それぞれのオシレーターユニットが、次の音高に変更される際のポルタメントを設定します。  
+ポルタメントの長さは、  
+Helicityが高速の場合:0-1sの範囲で決定され、
+Helicityが低速の場合:現在発音している音の長さを基準に決定されます。
 これらの設定はScaleやRootの変更、reloadボタンなど全てのピッチの変更に適用されます。
 
 ### Spread
