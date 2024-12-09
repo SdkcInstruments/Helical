@@ -7,13 +7,14 @@ MIDI Expander "Cuh"の為のMIDI機能を追加しました。
 
 # ChangeLog
 1. MIDI Output機能を追加しました。[詳細](#midi-output)
-2. brightnessの設定機能を削除しました。
-3. Dynamix Settingを追加しました。[詳細](#dynamics-setting)
-4. Scaleを変更した際の挙動を変更しました。[詳細](#scale)
-5. Clibration Modeを追加しました。[詳細](#calibration-mode)
-6. Glide挙動を変更しました。[詳細](#glide)
-7. SDカードの読み込みエラー時の挙動を追加しました。[詳細](#troubleshooting)
-8. 様々な問題を修正しました。
+2. Envelopeの挙動を変更しました。[詳細](#env)
+3. brightnessの設定機能を削除しました。
+4. Dynamix Settingを追加しました。[詳細](#dynamics-setting)
+5. Scaleを変更した際の挙動を変更しました。[詳細](#scale)
+6. Clibration Modeを追加しました。[詳細](#calibration-mode)
+7. Glide挙動を変更しました。[詳細](#glide)
+8. SDカードの読み込みエラー時の挙動を追加しました。[詳細](#troubleshooting)
+9. 様々な問題を修正しました。
 
 # Helical
 Helicalは自己回帰型シンセシス(Autoregressive Algorithmic Synthesizer)により構成された16音ポリフォニックシンセサイザーです。  
@@ -120,7 +121,9 @@ CCWでRootで設定された音のみ、CWでRootからG9までの幅が適応�
 
 エンベロープの割合の変更はそれぞれのエンベロープが最後に到達した後に適応されます。
 これを利用して、非常に早いアタックの音、ゆっくりとしたアタック、逆再生の様な音を同時に再生させる事ができます。
-ノブの左右の15%ではエンベロープのカーブがリニアからログに変更されます。
+ノブの左右の20%-35%/85%-100%ではエンベロープのカーブがリニアからログに変更されます。
+
+v2.04以降、CCW側の20%では、Attackが0の台形エンベロープに変更しました。
 
 ### re(L)oad / (R)eload
 * Arc/Orbit出力のそれぞれのユニットのパラメーターを強制的に再計算します。  
