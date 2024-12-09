@@ -1,20 +1,19 @@
 ### こちらはベータテスト用のファームウェアです。動作に不具合が含まれている可能性があります。アップデートを実施される際は、自己責任でお願い致します。
 ### This is a beta version of the firmware. Please note that it may contain bugs or other issues. Proceed with the update at your own risk.
-# Manual v2.01
+# Manual v2.04
 MIDI Expander "Cuh"の為のMIDI機能を追加しました。  
 その他ダイナミクスの設定/キャリブレーションなど様々な機能が追加されています。
 アップデートの方法については[こちら](#update-firmware)を参照してください。
 
 # ChangeLog
 1. MIDI Output機能を追加しました。[詳細](#midi-output)
-2. default volumeとbrightnessの設定機能を削除しました。
+2. brightnessの設定機能を削除しました。
 3. Dynamix Settingを追加しました。[詳細](#dynamics-setting)
 4. Scaleを変更した際の挙動を変更しました。[詳細](#scale)
 5. Clibration Modeを追加しました。[詳細](#calibration-mode)
 6. Glide挙動を変更しました。[詳細](#glide)
 7. SDカードの読み込みエラー時の挙動を追加しました。[詳細](#troubleshooting)
-8. USB電源のみが接続されている場合、Helicalを起動させない様にしました。
-9. GlideがCCWの場合、稀に起動しない問題を修正しました。
+8. 様々な問題を修正しました。
 
 # Helical
 Helicalは自己回帰型シンセシス(Autoregressive Algorithmic Synthesizer)により構成された16音ポリフォニックシンセサイザーです。  
@@ -182,6 +181,10 @@ Cuhのリンクを貼る。
 5. 右のLEDが赤く光ったら、全てのつまみをCWの位置に設定します。  
 6. Reloadボタン(右下のボタン)を押して離します。  
 キャリブレーションが成功していれば、Helicalが起動します。もし音が出ない場合は1.に戻ってやり直してください。
+
+V/OCTのキャリブレーションを正確に行いたい場合は、しっかりとチューニングされたV/OCTをRootInに接続し、3のときに0V/CCW、5のときに5V/CCWにしてキャリブレーションを行なってください。
+
+
 
 # SD Card Edit
 ## setting.txt
