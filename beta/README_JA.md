@@ -1,30 +1,31 @@
 ### こちらはベータテスト用のファームウェアです。動作に不具合が含まれている可能性があります。アップデートを実施される際は、自己責任でお願い致します。
 ### This is a beta version of the firmware. Please note that it may contain bugs or other issues. Proceed with the update at your own risk.
-# Manual v2.04
-MIDI Expander "Cuh"の為のMIDI機能を追加しました。  
+# Manual v2.06
+MIDI Expander "Cuh" は、HelicalにMIDI出力機能を追加する拡張モジュールです。  
+本バージョンでは、「Cuh」を使用するためのMIDI機能が追加されました。
 その他ダイナミクスの設定/キャリブレーションなど様々な機能が追加されています。
 アップデートの方法については[こちら](#update-firmware)を参照してください。
 
 # ChangeLog
-1. MIDI Output機能を追加しました。[詳細](#midi-output)
+1. <b>Cuh</b>(MIDI Expander)の為MIDI Output/Scale・Wavetableモジュレーション機能を追加しました。[詳細](#midi)
 2. Envelopeの挙動を変更しました。[詳細](#env)
-3. brightnessの設定機能を削除しました。
-4. Dynamix Settingを追加しました。[詳細](#dynamics-setting)
-5. Scaleを変更した際の挙動を変更しました。[詳細](#scale)
-6. Clibration Modeを追加しました。[詳細](#calibration-mode)
-7. Glide挙動を変更しました。[詳細](#glide)
-8. SDカードの読み込みエラー時の挙動を追加しました。[詳細](#troubleshooting)
-9. 様々な問題を修正しました。
+3. Dynamics Settingを追加しました。[詳細](#dynamics-setting)
+4. Scaleの最大数を16個に拡張し、演奏中にScaleを変更した際の挙動を変更しました。[詳細](#scale)
+5. Calibration Modeを追加しました。[詳細](#calibration-mode)
+6. Glide挙動を変更しました。[詳細](#glide)
+7. SDカードの読み込みエラー時の挙動を追加しました。[詳細](#troubleshooting)
+8. brightnessの設定機能を削除しました。
+9.  様々な細かな問題を修正しました。
 
 # Helical
 Helicalは自己回帰型シンセシス(Autoregressive Algorithmic Synthesizer)により構成された16音ポリフォニックシンセサイザーです。  
 自己回帰型シンセシスにより、無限に新しいフレーズや音響を生み出し続けます。  
-それぞれのオシレーターは、シーケンサー、Wavetabbleオシレーター、エンベロープジェネレーター、VCAを持っており、それらは各オシレーター毎に独立しています。  
+各オシレーターは、シーケンサー、Wavetableオシレーター、エンベロープジェネレーター、VCAを備えており、独立して動作します。
 ユーザーはパネル前面のSDカードに書き込むことで、スケール、LEDの色を専用のエディターで変更する事ができ、Wavetableも自由に変更可能です。
 
 
 <div style="text-align: center">
-    <img src="ManualData/helical_panel.png" width="30%">
+    <img src="data/helical_panel.png" width="30%">
 </div>
 
 [![helical demo](http://img.youtube.com/vi/5pqRVQMexkI/0.jpg)](https://www.youtube.com/watch?v=5pqRVQMexkI)
@@ -33,64 +34,73 @@ Helicalは自己回帰型シンセシス(Autoregressive Algorithmic Synthesizer)
 自己回帰型シンセシスはオリジナルの手法で、次のパラメーターを決定する為に、過去の状態を参照するアルゴリズムを持っています。
 Helicalでは、それぞれのオシレーターの過去のピッチ(音高)が次の音の長さ(音価)を決定し、過去の音価が次の音高に影響を与えています。過去から螺旋状(helical)に影響を受けることにより、完全なランダムとは異なる、自然な音響を生成します。
 
-<img src="ManualData/autoregressiveImage.jpg" width="100%">  
+<img src="data/autoregressiveImage.jpg" width="100%">  
 
-<img src="ManualData/CalcTiming.jpg" width="60%">
+<img src="data/CalcTiming.jpg" width="60%">
 
 新しい音高と音価はそれぞれのオシレーターのエンベロープが最後にたどり着いた瞬間に決定されます。
 
-<img src="ManualData/AutoregressiveSample.jpg" width="100%">
+<img src="data/AutoregressiveSample.jpg" width="100%">
 
-音価と音高の計算されるイメージは上記の様になります。
+音価と音高の計算の流れは、上図のようになります。
 
-Helicalは既存の音楽のリズムの概念(BPMから音価を決定する)ではない、新しいリズムを探求することを目的にデザインされています。  
+Helicalは既存の音楽のリズムの概念(BPMから音価を決定する)ではない、新しいリズムを探求することを目的に設計されています。  
 (後述のPolyノブのCVに外部クロックを接続することにより、外部クロックとの同期もできます。)
 
 # Diagrams
-<img src="ManualData/HelicalDiagram.jpg" width="100%">    
+<img src="data/HelicalDiagram.jpg" width="100%">    
 
 
 # Controls and Outputs
 
 <div style="text-align: center">
-    <img src="ManualData/helical_panel.png" width="30%">
+    <img src="data/helical_panel.png" width="30%">
 </div>
 
 ### Arc/Orbit
-* Helicalの出力は8オシレーターユニット毎にArcアウトプットとOrbitアウトプットにルーティングされています。
+Helicalの出力は8ボイス毎にArcアウトプットとOrbitアウトプットにルーティングされています。
 
-Orbitアウトに何も接続されていない場合はMonoモードとなり、Arcアウトプットに全てのオシレーターユニットがルーティングされます。
+:::note info
+Orbitアウトに何も接続されていない場合はMonoモードとなり、Arcアウトプットから全てのボイスの音が出力されます。
+:::
+
 ### Poly 
-* 同時発音数を0から8 (monoモードの場合は0から16) で設定します。  
+  同時発音数を0から8 (monoモードの場合は0から16) で設定します。  
 
-つまみの位置がCCW(最も左)にしても、それぞれのオシレーターのエンベロープが終わりに到達するまで無音にはなりません。  
-全てのオシレーターユニットは無音状態では完全に止まっており、Polyノブを上げていくことで、それぞれのオシレーターは待機状態から動作を始めます。つまり、待機状態ではエンベロープのループは停止しており、動作状態になることで初めてエンベロープが開始します。  
-この特性を利用して、Polyノブを0にし、CVinにClockを接続する事で、外部のクロックと同期が可能になります。この場合HelicityノブはClockDividerの様な機能を持ちます。
+    つまみの位置がCCW(最も左)にしても、それぞれのオシレーターのエンベロープが終わりに到達するまで無音にはなりません。  
+    全てのオシレーターユニットは無音状態では完全に止まっており、Polyノブを上げていくことで、それぞれのオシレーターは待機状態から動作を始めます。つまり、待機状態ではエンベロープのループは停止しており、動作状態になることで初めてエンベロープが開始します。  
+    この特性を利用して、Polyノブを0にし、CVinにClockを接続する事で、外部のクロックと同期が可能になります。この場合HelicityノブはClockDividerの様な機能を持ちます。
 
 ### Root
 * ルート音を設定します。1-5vのレンジ外ではV/OCTのトラッキングが不安定になる場合があります。Chromatic Modeがオンの場合、発音が終わるまでRootの値は反映されません。
 ### Scale
-* 使用するスケールとWavetableを設定します。スケールの変更はノブを回す事で、Wavetableの変更はノブを押しこみながら回す事で変更が可能です。  
+* 使用するスケールとWavetableを設定します。Scaleはノブを回して変更し、Wavetableはノブを押し込みながら回して変更できます。
   
   - Lockしている場合は直ぐにScaleの変更が反映されますが、Lockしていない場合は発音が終わり次第、現在のScaleが反映された音高になります。
   
 * relOad(右下のリロードボタン)を押しながらScaleノブを押し込み、回すことで、FineTuneを設定する事ができます。  
 * Scale,Wavetable,Finetuneの設定は次回起動時も引き継がれます。
 
-デフォルトのスケールプリセットは以下になります。 
+デフォルトのスケールプリセットは以下のとおりです。
 
     0,Major(R)  
-    1,Natural Minor (R)  
-    2,Harmonic Minor(R)  
-    3,Melodic Minor(R)  
-    4,Dorian(R)  
-    5,Major Pentatonic(R)  
-    6,Minor Pentatonic(R)  
-    7,Chromatic Scale  
-    8,1M7(R)  
-    9,4M7(R)  
+    1,Lydian(R)  
+    2,Mixolydian(R)  
+    3,Major Pentatonic(R)  
+    4,Natural Minor(R)  
+    5,Dorian(R)  
+    6,Phrygian(R)  
+    7,Minor Pentatonic(R)  
+    8,ⅠM7(R)  
+    9,Ⅱm7(R)  
+    10,Ⅲm7(R)
+    11,ⅣM7(R)
+    12,Ⅴ7(R)
+    13,Ⅵm7(R)
+    14,Wholetone
+    15,Choromatic
     (R) Root Emphasizeがオンになっています。
-    Root Emphasizeがonになると、一番下のオクターブはRootと5度上の音のみが選択されます。
+    Root Emphasizeがonの場合、最も低いオクターブでは、Scaleで設定した一番下のオクターブ内の音のみが選択され、それより上のオクターブでは通常のスケールが適用されます。
     より詳細はScale Editorを参考にしてください。
 
 
@@ -104,10 +114,11 @@ Helicityが低速の場合:現在発音している音の長さを基準に決�
 ### Spread
 * 音価から音高を計算する際の音高の幅を設定します。
 
-CCWでRootで設定された音のみ、CWでRootからG9までの幅が適応されます。
+CCWでRootで設定された音のみ、CWでRootからG9までの幅が適用されます。
 
 ### Wave
-* プリセットで選択されたWavetable内をモーフィングさせます。
+* プリセット内のWavetableを滑らかに変化させることができます。
+
   
 全てのwavetable間は保管されているので、スムースにwavetable間を移動する事ができます。
 
@@ -119,14 +130,15 @@ CCWでRootで設定された音のみ、CWでRootからG9までの幅が適応�
 ### Env
 * エンベロープのアタックとディケイの割合を設定します。
 
-エンベロープの割合の変更はそれぞれのエンベロープが最後に到達した後に適応されます。
-これを利用して、非常に早いアタックの音、ゆっくりとしたアタック、逆再生の様な音を同時に再生させる事ができます。
+エンベロープの変更はそれぞれのエンベロープが発音する際に適用されます。
+これを利用して、非常に早いアタックの音、ゆっくりとしたアタック、逆再生の様な音を同時に再生させる事ができます。  
 ノブの左右の20%-35%/85%-100%ではエンベロープのカーブがリニアからログに変更されます。
 
-v2.04以降、CCW側の20%では、Attackが0の台形エンベロープに変更しました。
+v2.04以降、CCW側の20%では、下記の様なAttackが0の台形エンベロープに変更されてます。
+<img src="data/env.png" wdth = "100%">
 
 ### re(L)oad / (R)eload
-* Arc/Orbit出力のそれぞれのユニットのパラメーターを強制的に再計算します。  
+* Arc/Orbit出力の各オシレーターユニットのパラメーターを強制的に再計算します。  
 
 5Vのゲート外部信号でトリガーする事ができます。
 
@@ -139,14 +151,19 @@ v2.04以降、CCW側の20%では、Attackが0の台形エンベロープに変�
 Synthesis Technologyの<a href="https://synthtech.com/waveedit/">Wave Edit</a>を使用して、オリジナルのwavetableのプリセットを作る事ができます。
 
 
-<img src="ManualData/WaveEdit.jpg" width="100%">  
+<img src="data/WaveEdit.jpg" width="100%">  
 上図の様に、上から8個のwavetableごとにHelicalの一つのプリセットになります。
 書き出したwavファイルをbuf_wt.wavという名前にリネームして、SDカードに上書きしてください。
 
 Wave Editのより詳細な説明や使い方については<a href="https://synthtech.com/waveedit/">SynthsisTechnology</a>のページを参照してください。
 
 
-もし他のソフトウェアやプログラムを使用する場合は、256sample、64テーブルの計16384sampleのwavファイルを書き出して、buf_wt.wavとリネームし、SDカードに上書きしてください。
+他のソフトウェアやプログラムを使用する場合は、以下の条件を満たしたwavファイルを作成してください。
+
+* サンプル数: 256 samples
+* テーブル数: 64
+* 総サンプル数: 16384 samples  
+その後、ファイル名を buf_wt.wav にリネームし、SDカードに上書きしてください。
 
 # Scale Edit
 <a href = "https://github.com/SdkcInstruments/Helical/tree/main/ScaleEditor">ScaleEditor</a>のページを参照してください。
@@ -169,11 +186,61 @@ ScaleKnobを押し込みながら起動することで、ChromaticModeの設定�
 
 SDカードのsetting.txtのchromaticModeを0/1にする事で指定することも可能です。
 
-# MIDI Output
-Helical背面のUSB MicroB端子にUSBケーブル接続することで、HelicalはMIDI Deviceとして動作し、ノート情報および全てのつまみとLockSwitchのCCを出力します。  
-<span style="color: red; ">
-Cuh(MIDI Expander)を使用せず、過電流などにより故障した場合は保証対象外になります。(CuhはUSBHostからの電源をカットしています。)</span>  
-Cuhのリンクを貼る。
+# MIDI
+### MIDI Output
+Helical背面のUSB MicroB端子とCuh(MIDI Expander)を接続することで、HelicalはMIDI Deviceとして動作し、ノート情報及び全てのつまみとLockSwitchのCCを出力します。  
+<span style="color: red;">
+Cuhを使用せず、過電流などにより故障した場合は保証対象外になります。(CuhはUSBHostからの電源をカットしています。)  
+CuhはMIDI Deviceとしてのみ動作します。MIDIHostとして使用したい場合は別途変換が必要になります。</span>  
+
+
+### Note/CC Output
+全てのNote/CCMessageは、CuhのUSB OutおよびTRS MIDI Outから出力されます。  
+SDCardのmidiSetting.txtのmidiChArc・midiChOrbit・midiCCChの数値を変更することで、それぞれの出力Chを変更する事ができます。  
+Orbitにジャックが接続されていない場合、全てのNote情報はmidiChArcから出力されます。
+  
+
+| midiSettingName  | detail |  Range
+| ---- | ---- | ---- |
+| midiChArc |Set Arc MIDI Ch| 1 ~ 127 |
+| midiChOrbit | Set Orbit MIDI | 1 ~ 127 |
+| ccEnable |Set Enable CC| 0 or 1 (Off/On)|
+| midiCCCh | Set CC Ch | 1 ~ 127 |
+| ccPoly | Set Poly CC number | 1 ~ 127 |
+| ccRoot | Set Root CC number | 1 ~ 127 |
+| ccGlide | Set Glide CC number | 1 ~ 127 |
+| ccSpread | Set Spread CC number | 1 ~ 127 |
+| ccHelicity | Set Helicity CC number | 1 ~ 127 |
+| ccWave | Set Wave CC number | 1 ~ 127 |
+| ccEnv | Set Env CC number | 1 ~ 127 |
+| ccLock | Set Lock CC number | 1 ~ 127 |
+| ccCutoff | Set Cutoff CC number | 1 ~ 127 |
+| ccQ | Set Q CC number | 1 ~ 127 |
+| ccIndex | Set Index CC number | 1 ~ 127 |
+| ccFilterType | Set Lp-Hp CC number | 1 ~ 127 |
+| ccLength | Set Length CC number | 1 ~ 127 |
+
+
+### sample
+```setting.txt
+midiChArc 1
+midiChOrbit 2
+midiCCCh 1
+ccPoly 20
+ccRoot 21
+ccGlide 22
+ccSpread 23
+ccHelicity 24
+ccWave 25
+ccEnv 26
+ccLock 27
+ccCutoff 28
+ccQ 29
+ccIndex 30
+ccFilterType 31
+ccLength 32
+```
+
 
 # Calibration Mode
 以下の方法で全てのKnobとCV入力をキャリブレーションする事ができます。  
@@ -185,7 +252,7 @@ Cuhのリンクを貼る。
 6. Reloadボタン(右下のボタン)を押して離します。  
 キャリブレーションが成功していれば、Helicalが起動します。もし音が出ない場合は1.に戻ってやり直してください。
 
-V/OCTのキャリブレーションを正確に行いたい場合は、しっかりとチューニングされたV/OCTをRootInに接続し、3のときに0V/CCW、5のときに5V/CCWにしてキャリブレーションを行なってください。
+V/OCTのキャリブレーションを正確に行いたい場合は、チューニングされたV/OCTをRootInに接続し、上記手順3のときに0V/CCW、手順5のときに5V/CCWにしてキャリブレーションを行なってください。
 
 
 
@@ -201,15 +268,19 @@ setting.txtの内容は全てHelical本体で設定することが出来ます�
 | volCenter | center volume | 0 ~ 100 |
 | volWidth | random range | 0 ~ 100 |
 | chromaticMode | switch chromatic mode | 0(off) / 1(on) |
+| masterVol | set masterVolume | 0-65535 |
+| envMode | switch chromatic mode | 0(old) / 1([new](#env)) |
 
 ### sample
 ```setting.txt
 finetune 0
-scale 0
+scale 8
 wavetable 0
-volCenter 75
-volWidth 50
+volCenter 46
+volWidth 35
 chromaticMode 1
+masterVol 43007
+envMode 1
 ```
 
 ## calibration.txt
@@ -228,15 +299,14 @@ Helicalは公式のファームウェア以外の対応は行いません。
 非公式のDaisyのファームウェアを書き込んだことによって起きた故障は、保証の対象外となります。
 
 Helicalの<a href = "https://github.com/SdkcInstruments/Helical/blob/main/beta/helical_firmware_v2.01.bin">GitHubのページ</a>からファームウェア（binファイル）をダウンロードしてください。  
-**その際右クリックで保存ではなく、 Download Raw Fileからダウンロードを行なってください。**  
+**その際右クリックで保存ではなく、 右上のDownload Raw Fileからダウンロードを行なってください。**  
 
 <a href = "https://electro-smith.github.io/Programmer/">Daisy Web Programmer</a> のページに移動し、記載されている手順に従ってファームウェアをアップロードしてください。  
 
 正しく書き込めている場合、Wrote 129828 bytesと表示されます。数字が異なっている場合、ダウンロードしたファイルが間違っている可能性があります。Download raw fileからダウンロードし直してください。
 
-DaisySeedからUSBケーブルを抜いた後、ユーロラックケースの電源を入れて、ファームウェアのアップデートが正常に行われているか確認してください。  
+DaisySeedのUSBケーブルを抜き、ユーロラックケースの電源を入れて、アップデートが正常に完了したことを確認してください。
 
-Helicalの背面のシリアルが358以降の場合出荷時のファームウェアはv2.01です。
 
 # Troubleshooting
 Helicalが起動しない場合以下のチェックをしてください。
