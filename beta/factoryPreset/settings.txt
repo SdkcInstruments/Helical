@@ -1,6 +1,8 @@
 finetune 0
-scale 5
-wavetable 2
-volCenter 71
-volWidth 100
+scale 15
+wavetable 0
+volCenter 60
+volWidth 28
 chromaticMode 1
+masterVol 65535
+envMode 1
