@@ -1,21 +1,10 @@
 ### こちらはベータテスト用のファームウェアです。動作に不具合が含まれている可能性があります。アップデートを実施される際は、自己責任でお願い致します。
 ### This is a beta version of the firmware. Please note that it may contain bugs or other issues. Proceed with the update at your own risk.
-# Manual v2.06
-MIDI Expander "Cuh" は、HelicalにMIDI出力機能を追加する拡張モジュールです。  
-本バージョンでは、「Cuh」を使用するためのMIDI機能が追加されました。
-その他ダイナミクスの設定/キャリブレーションなど様々な機能が追加されています。
+# Manual v2.08 
+本バージョンでは、「Cuh」を使用するためのMIDI機能が追加されました。  
+その他、ダイナミクスの設定/キャリブレーションなど様々な機能が追加されています。  
+[ChangeLog](#changelogv208)  
 アップデートの方法については[こちら](#update-firmware)を参照してください。
-
-# ChangeLog
-1. <b>Cuh</b>(MIDI Expander)の為MIDI Output/Scale・Wavetableモジュレーション機能を追加しました。[詳細](#midi)
-2. Envelopeの挙動を変更しました。[詳細](#env)
-3. Dynamics Settingを追加しました。[詳細](#dynamics-setting)
-4. Scaleの最大数を16個に拡張し、演奏中にScaleを変更した際の挙動を変更しました。[詳細](#scale)
-5. Calibration Modeを追加しました。[詳細](#calibration-mode)
-6. Glide挙動を変更しました。[詳細](#glide)
-7. SDカードの読み込みエラー時の挙動を追加しました。[詳細](#troubleshooting)
-8. brightnessの設定機能を削除しました。
-9.  様々な細かな問題を修正しました。
 
 
 # Helical
@@ -71,7 +60,7 @@ Orbitアウトに何も接続されていない場合はMonoモードとなり�
 </pre>
 <pre>
 全てのオシレーターユニットは無音状態では完全に止まっており、Polyノブを上げていくことで、それぞれのオシレーターは待機状態から動作を始めます。つまり、待機状態ではエンベロープのループは停止しており、動作状態になることで初めてエンベロープが開始します。  
-この特性を利用して、Polyノブを0にし、CVinにClockを接続する事で、外部のクロックと同期が可能になります。この場合HelicityノブはClockDividerの様な機能を持ちます。
+この特性を利用して、Polyノブを0にし、CV入力にClockを接続する事で、外部のクロックと同期が可能になります。この場合HelicityノブはClockDividerの様な機能を持ちます。
 </pre>
 
 ### Root
@@ -81,7 +70,7 @@ Orbitアウトに何も接続されていない場合はMonoモードとなり�
 ### Scale
 使用するスケールとWavetableを設定します。Scaleはノブを回して変更し、Wavetableはノブを押し込みながら回して変更できます。
 <pre>
-Lockがオン(上向)の場合は直ぐにScaleの変更が反映されますが、Lockがオフ(下向)の場合は発音が終わり次第、現在のScaleが反映された音高になります。
+Lockがオン（スイッチが上向き）の場合、Scaleの変更は即座に反映されますがLockがオフ(スイッチが下向き)の場合は発音が終わり次第、現在のScaleが反映された音高になります。
 </pre> 
 
 
@@ -106,7 +95,7 @@ Lockがオン(上向)の場合は直ぐにScaleの変更が反映されますが
 (R) Root Emphasizeがオンになっています。
 </pre>
 <pre>
-Root Emphasizeがonの場合、最も低いオクターブでは、Scaleで設定した一番下のオクターブ内の音のみが選択され、それより上のオクターブでは通常のスケールが適用されます。
+Root Emphasizeがオンの場合、最も低いオクターブでは、Scaleで設定した一番下のオクターブ内の音のみが選択され、それより上のオクターブでは通常のスケールが適用されます。
 より詳細はScale Editorを参考にしてください。
 </pre>
 
@@ -121,7 +110,8 @@ Root Emphasizeがonの場合、最も低いオクターブでは、Scaleで設�
 ### Spread
 音価から音高を計算する際の音高の幅を設定します。
 <pre>
-CCWでRootで設定された音のみ、CWでRootからG9までの幅が適用されます。
+CCWでは、Rootで設定された音のみが使用されます。
+CWでRootからG9までの幅が適用されます。
 </pre>
 ### Wave
 プリセット内のWavetableを滑らかに変化させることができます。
@@ -173,35 +163,12 @@ Wave Editのより詳細な説明や使い方については<a href="https://syn
 # Scale Edit
 <a href = "https://github.com/SdkcInstruments/Helical/tree/main/ScaleEditor">ScaleEditor</a>のページを参照してください。
 
-# Hidden Settings
-## Dynamics Setting
-新しい音を発音する際に、音量を指定した範囲の中からランダムで設定する機能です。   
-### 設定方法
-1. ScaleKnobをダブルクリックして、DynamicSettingModeに入ります。  
-(LEDが高速で点滅します)
-1. reloAd(左下のボタン)を押しながらScaleノブを回転させることで、音量の範囲の中心を設定します。
-2. reLoad(右下のボタン)を押しながらScaleノブを回転させることで、音量の幅を設定します。
-3. Scaleノブをクリックすることで通常のModeに戻ります。
-- 大まかな範囲はHelical本体のLEDに表示されます。もし正確な値に調整したい場合はSDカード内のsetting.txtファイルをPC等で開き、volCenterとvolWidthに0-100の値を記入してください。単位は%です。  
-  SDカードのedit可能パラメーターについてはこちら。
-- MIDI出力のベロシティは0-127にリマップした値が反映されます。
-
-
-## Chromatic Mode
-ScaleKnobを押し込みながら起動することで、ChromaticModeの設定が切り替わります。v2.01以降のデフォルトはChromaticModeがオンになっています。
-
-SDカードのsetting.txtのchromaticModeを0/1にする事で指定することも可能です。
-
-## Volume Edit
-relOad(右下のリロードボタン)を押しながらScaleノブを押し込み、回すことで、FineTuneを設定する事ができます。  
-
-
 # MIDI
 ### MIDI Output
 Helical背面のUSB MicroB端子とCuh(MIDI Expander)を接続することで、HelicalはMIDI Deviceとして動作し、ノート情報及び全てのつまみとLockSwitchのCCを出力します。  
 <span style="color: red;">
-Cuhを使用せず、過電流などにより故障した場合は保証対象外になります。(CuhはUSBHostからの電源をカットしています。)  
-CuhはMIDI Deviceとしてのみ動作します。MIDIHostとして使用したい場合は別途変換が必要になります。</span>  
+Cuhを使用せずに接続した場合、過電流などによる故障が発生する可能性があります。その場合、本製品の保証対象外となります。(CuhはUSBHostからの電源をカットしています。)  
+CuhはMIDI Deviceとしてのみ動作します。MIDIHostとして使用したい場合は別途変換を購入してください。</span>  
 
 
 ### Note/CC Output
@@ -255,14 +222,44 @@ ccLength 32
 # Calibration Mode
 以下の方法で全てのKnobとCV入力をキャリブレーションする事ができます。  
 1. 電源をオフにし、全てのパッチケーブルを抜いて下さい。  
-2. reLoadボタンと、Reloadボタンを押しながら電源を入れ、左のLEDが赤に光ったら手を離して下さい。  
+2. reloAdボタンと、relOadボタンを押しながら電源を入れ、左のLEDが赤に光ったら手を離して下さい。  
 3. 全てのつまみをCCWの位置に設定します。  
-4. reLoadボタン(左下のボタン)を押して離します。  
+4. reloAdボタン(左下のボタン)を押して離します。  
 5. 右のLEDが赤く光ったら、全てのつまみをCWの位置に設定します。  
-6. Reloadボタン(右下のボタン)を押して離します。  
+6. relOadボタン(右下のボタン)を押して離します。  
 キャリブレーションが成功していれば、Helicalが起動します。もし音が出ない場合は1.に戻ってやり直してください。
 
 V/OCTのキャリブレーションを正確に行いたい場合は、チューニングされたV/OCTをRootInに接続し、上記手順3のときに0V/CCW、手順5のときに5V/CCWにしてキャリブレーションを行なってください。
+
+
+
+# Hidden Settings
+## Dynamics Setting
+新しい音を発音する際に、音量を指定した範囲の中からランダムで設定する機能です。   
+### 設定方法
+1. ScaleKnobをダブルクリックして、DynamicSettingModeに入ります。  
+(LEDが高速で点滅します)
+1. reloAd(左下のボタン)を押しながらScaleノブを回転させることで、音量の範囲の中心を設定します。
+2. relOad(右下のボタン)を押しながらScaleノブを回転させることで、音量の幅を設定します。
+3. Scaleノブをクリックすることで通常のModeに戻ります。
+- 大まかな範囲はHelical本体のLEDに表示されます。もし正確な値に調整したい場合はSDカード内のsetting.txtファイルをPC等で開き、volCenterとvolWidthに0-100の値を記入してください。単位は%です。  
+  SDカードのedit可能パラメーターについてはこちら。
+- MIDI出力のベロシティは0-127にリマップした値が反映されます。
+
+
+## Chromatic Mode
+ScaleKnobを押し込みながら起動することで、ChromaticModeの設定が切り替わります。v2.01以降のデフォルトはChromaticModeがオンになっています。
+  
+ChromaticModeがオンの場合、Rootによって決定されるピッチが半音階毎に変化します。  
+オフの場合はこれまでと同様に、Rootによって決定されるピッチが直線的に変化します。
+<pre>
+SDカードのsetting.txtのchromaticModeを0/1にする事で指定することも可能です。
+</pre>
+## Volume Edit
+reloAd(左下のリロードボタン)を押しながらScaleノブを押し込み、回すことで、MasterVolumeを設定する事ができます。  
+
+## Fine Tune
+relOad(右下のリロードボタン)を押しながらScaleノブを押し込み、回すことで、FineTuneを設定する事ができます。  
 
 
 
@@ -325,7 +322,7 @@ Helicalが起動しない場合以下のチェックをしてください。
     それでも起動しない場合は、SDカードの中身をFactoryPresetに差し替えてください。  
     Todo リンクを貼って、FactoryPresetをアップロードする。
 - LEDが赤白黄に光っていますか？(未実装)  
-    →waveTableが読み込めていません。オリジナルのwavetableを使っている場合、サンプル数が正しいか/ファイル名が"buf_wt.wav"になっているか確認し、再度SDカードに書き込んでください。
+    →waveTableが読み込めていません。オリジナルのwavetableを使っている場合、サンプル数が正しいか/ファイル名が"buf_wt.wav"になっているか確認し、SDカードに再度書き込んでください。
 - Firmwareアップデート後起動しなくなりましたか？  
     → Firmwareのアップデートをもう一度やってみてください。
 - その他の症状  
@@ -343,6 +340,16 @@ Audio codec: 48kHz/24bit
 Control rate: audio-rate for the Helicity knob, 1kHz for the another CV inputs.  
 CV input range: +/- 5V (depends on the knob position)
 
+# ChangeLog(v2.08)
+1. <b>Cuh</b>(MIDI Expander)の為MIDI Output/Scale・Wavetableモジュレーション機能を追加しました。[詳細](#midi)
+2. Envelopeの挙動を変更しました。[詳細](#env)
+3. Dynamics Settingを追加しました。[詳細](#dynamics-setting)
+4. Scaleの最大数を16個に拡張し、演奏中にScaleを変更した際の挙動を変更しました。[詳細](#scale)
+5. Calibration Modeを追加しました。[詳細](#calibration-mode)
+6. Glide挙動を変更しました。[詳細](#glide)
+7. SDカードの読み込みエラー時の挙動を追加しました。[詳細](#troubleshooting)
+8. brightnessの設定機能を削除しました。
+9.  様々な細かな問題を修正しました。
 
 # Acknowledgment
 以下の人々の助けがなければHelicalは完成しませんでした。  
