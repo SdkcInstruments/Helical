@@ -17,6 +17,7 @@ MIDI Expander "Cuh" は、HelicalにMIDI出力機能を追加する拡張モジ�
 8. brightnessの設定機能を削除しました。
 9.  様々な細かな問題を修正しました。
 
+
 # Helical
 Helicalは自己回帰型シンセシス(Autoregressive Algorithmic Synthesizer)により構成された16音ポリフォニックシンセサイザーです。  
 自己回帰型シンセシスにより、無限に新しいフレーズや音響を生み出し続けます。  
@@ -57,94 +58,98 @@ Helicalは既存の音楽のリズムの概念(BPMから音価を決定する)�
     <img src="data/helical_panel.png" width="30%">
 </div>
 
-### Arc/Orbit
+### Arc/Orbit Outputs
 Helicalの出力は8ボイス毎にArcアウトプットとOrbitアウトプットにルーティングされています。
-
-:::note info
+<pre>
 Orbitアウトに何も接続されていない場合はMonoモードとなり、Arcアウトプットから全てのボイスの音が出力されます。
-:::
-
+</pre>
 ### Poly 
   同時発音数を0から8 (monoモードの場合は0から16) で設定します。  
 
-    つまみの位置がCCW(最も左)にしても、それぞれのオシレーターのエンベロープが終わりに到達するまで無音にはなりません。  
-    全てのオシレーターユニットは無音状態では完全に止まっており、Polyノブを上げていくことで、それぞれのオシレーターは待機状態から動作を始めます。つまり、待機状態ではエンベロープのループは停止しており、動作状態になることで初めてエンベロープが開始します。  
-    この特性を利用して、Polyノブを0にし、CVinにClockを接続する事で、外部のクロックと同期が可能になります。この場合HelicityノブはClockDividerの様な機能を持ちます。
+<pre>
+つまみの位置がCCW(最も左)にしても、それぞれのオシレーターのエンベロープが終わりに到達するまで発音は続きます。
+</pre>
+<pre>
+全てのオシレーターユニットは無音状態では完全に止まっており、Polyノブを上げていくことで、それぞれのオシレーターは待機状態から動作を始めます。つまり、待機状態ではエンベロープのループは停止しており、動作状態になることで初めてエンベロープが開始します。  
+この特性を利用して、Polyノブを0にし、CVinにClockを接続する事で、外部のクロックと同期が可能になります。この場合HelicityノブはClockDividerの様な機能を持ちます。
+</pre>
 
 ### Root
-* ルート音を設定します。1-5vのレンジ外ではV/OCTのトラッキングが不安定になる場合があります。Chromatic Modeがオンの場合、発音が終わるまでRootの値は反映されません。
+  ルート音を設定します。
+
+    1-5vのレンジ外ではV/OCTのトラッキングが不安定になる場合があります。Chromatic Modeがオンの場合、発音が終わるまでRootの値は反映されません。
 ### Scale
-* 使用するスケールとWavetableを設定します。Scaleはノブを回して変更し、Wavetableはノブを押し込みながら回して変更できます。
-  
-  - Lockしている場合は直ぐにScaleの変更が反映されますが、Lockしていない場合は発音が終わり次第、現在のScaleが反映された音高になります。
-  
-* relOad(右下のリロードボタン)を押しながらScaleノブを押し込み、回すことで、FineTuneを設定する事ができます。  
-* Scale,Wavetable,Finetuneの設定は次回起動時も引き継がれます。
+使用するスケールとWavetableを設定します。Scaleはノブを回して変更し、Wavetableはノブを押し込みながら回して変更できます。
+<pre>
+Lockがオン(上向)の場合は直ぐにScaleの変更が反映されますが、Lockがオフ(下向)の場合は発音が終わり次第、現在のScaleが反映された音高になります。
+</pre> 
+
 
 デフォルトのスケールプリセットは以下のとおりです。
-
-    0,Major(R)  
-    1,Lydian(R)  
-    2,Mixolydian(R)  
-    3,Major Pentatonic(R)  
-    4,Natural Minor(R)  
-    5,Dorian(R)  
-    6,Phrygian(R)  
-    7,Minor Pentatonic(R)  
-    8,ⅠM7(R)  
-    9,Ⅱm7(R)  
-    10,Ⅲm7(R)
-    11,ⅣM7(R)
-    12,Ⅴ7(R)
-    13,Ⅵm7(R)
-    14,Wholetone
-    15,Choromatic
-    (R) Root Emphasizeがオンになっています。
-    Root Emphasizeがonの場合、最も低いオクターブでは、Scaleで設定した一番下のオクターブ内の音のみが選択され、それより上のオクターブでは通常のスケールが適用されます。
-    より詳細はScale Editorを参考にしてください。
-
+<pre>
+0,Major(R)  
+1,Lydian(R)  
+2,Mixolydian(R)  
+3,Major Pentatonic(R)  
+4,Natural Minor(R)  
+5,Dorian(R)  
+6,Phrygian(R)  
+7,Minor Pentatonic(R)  
+8,ⅠM7(R)  
+9,Ⅱm7(R)  
+10,Ⅲm7(R)
+11,ⅣM7(R)
+12,Ⅴ7(R)
+13,Ⅵm7(R)
+14,Wholetone
+15,Choromatic
+(R) Root Emphasizeがオンになっています。
+</pre>
+<pre>
+Root Emphasizeがonの場合、最も低いオクターブでは、Scaleで設定した一番下のオクターブ内の音のみが選択され、それより上のオクターブでは通常のスケールが適用されます。
+より詳細はScale Editorを参考にしてください。
+</pre>
 
 ### Glide
-* それぞれのオシレーターユニットが、次の音高に変更される際のポルタメントを設定します。  
+それぞれのオシレーターユニットが、次の音高に変更される際のポルタメントを設定します。  
+<pre>
 ポルタメントの長さは、  
-Helicityが高速の場合:0-1sの範囲で決定され、
-Helicityが低速の場合:現在発音している音の長さを基準に決定されます。
+・Helicityが高速の場合:0-1sの範囲で決定され、
+・Helicityが低速の場合:現在発音している音の長さを基準に決定されます。
 これらの設定はScaleやRootの変更、reloadボタンなど全てのピッチの変更に適用されます。
-
+</pre>
 ### Spread
-* 音価から音高を計算する際の音高の幅を設定します。
-
+音価から音高を計算する際の音高の幅を設定します。
+<pre>
 CCWでRootで設定された音のみ、CWでRootからG9までの幅が適用されます。
-
+</pre>
 ### Wave
-* プリセット内のWavetableを滑らかに変化させることができます。
-
-  
-全てのwavetable間は保管されているので、スムースにwavetable間を移動する事ができます。
+プリセット内のWavetableを滑らかに変化させることができます。
 
 ### Helicity
-* 音高から音価を計算する際の倍率を決定します。
-
+音高から音価を計算する際の倍率を決定します。
+<pre>
 音価は √音高*Helicity の計算で決定され、Helicityの値は0.002から300倍の値をとります。
-
+</pre>
 ### Env
-* エンベロープのアタックとディケイの割合を設定します。
-
+エンベロープのアタックとディケイの割合を設定します。
+<pre>
 エンベロープの変更はそれぞれのエンベロープが発音する際に適用されます。
 これを利用して、非常に早いアタックの音、ゆっくりとしたアタック、逆再生の様な音を同時に再生させる事ができます。  
 ノブの左右の20%-35%/85%-100%ではエンベロープのカーブがリニアからログに変更されます。
-
+</pre>
+<pre>
 v2.04以降、CCW側の20%では、下記の様なAttackが0の台形エンベロープに変更されてます。
 <img src="data/env.png" wdth = "100%">
+</pre>
 
 ### re(L)oad / (R)eload
-* Arc/Orbit出力の各オシレーターユニットのパラメーターを強制的に再計算します。  
-
-5Vのゲート外部信号でトリガーする事ができます。
-
+Arc/Orbit出力の各オシレーターユニットのパラメーターを強制的に再計算します。  
+<pre>
+monoモードの場合(Orbit出力にケーブルが刺されていない場合)、re(L)oadのゲートインは、全てのオシレーターユニットを再計算します。
+</pre>
 ### Lock
-
-* エンベロープが最後間で到達しても、音高と音価の計算を行わないスイッチです。
+エンベロープが最後まで到達しても、音高と音価の計算を行わないスイッチです。
   
 
 # Wavetable Edit
@@ -168,7 +173,8 @@ Wave Editのより詳細な説明や使い方については<a href="https://syn
 # Scale Edit
 <a href = "https://github.com/SdkcInstruments/Helical/tree/main/ScaleEditor">ScaleEditor</a>のページを参照してください。
 
-# Dynamics Setting
+# Hidden Settings
+## Dynamics Setting
 新しい音を発音する際に、音量を指定した範囲の中からランダムで設定する機能です。   
 ### 設定方法
 1. ScaleKnobをダブルクリックして、DynamicSettingModeに入ります。  
@@ -181,10 +187,14 @@ Wave Editのより詳細な説明や使い方については<a href="https://syn
 - MIDI出力のベロシティは0-127にリマップした値が反映されます。
 
 
-# Chromatic Mode
+## Chromatic Mode
 ScaleKnobを押し込みながら起動することで、ChromaticModeの設定が切り替わります。v2.01以降のデフォルトはChromaticModeがオンになっています。
 
 SDカードのsetting.txtのchromaticModeを0/1にする事で指定することも可能です。
+
+## Volume Edit
+relOad(右下のリロードボタン)を押しながらScaleノブを押し込み、回すことで、FineTuneを設定する事ができます。  
+
 
 # MIDI
 ### MIDI Output
