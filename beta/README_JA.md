@@ -4,7 +4,7 @@
 本バージョンでは、「Cuh」を使用するためのMIDI機能が追加されました。  
 その他、ダイナミクスの設定/キャリブレーションなど様々な機能が追加されています。  
 [ChangeLog](#changelogv208)  
-アップデートの方法については[こちら](#update-firmware)を参照してください。
+アップデートの方法については本ページ末尾の[『Update firmware』](#update-firmware)セクションを参照してください。
 
 
 # Helical
@@ -28,7 +28,7 @@ Helicalでは、それぞれのオシレーターの過去のピッチ(音高)�
 
 <img src="data/CalcTiming.jpg" width="60%">
 
-新しい音高と音価はそれぞれのオシレーターのエンベロープが最後にたどり着いた瞬間に決定されます。
+新しい音高と音価はそれぞれのオシレーターのエンベロープが最後まで到達したタイミングで決定されます。
 
 <img src="data/AutoregressiveSample.jpg" width="100%">
 
@@ -56,7 +56,7 @@ Orbitアウトに何も接続されていない場合はMonoモードとなり�
   同時発音数を0から8 (monoモードの場合は0から16) で設定します。  
 
 <pre>
-つまみの位置がCCW(最も左)にしても、それぞれのオシレーターのエンベロープが終わりに到達するまで発音は続きます。
+ノブの位置がCCW(最も左)にしても、それぞれのオシレーターのエンベロープが終わりに到達するまで発音は続きます。
 </pre>
 <pre>
 全てのオシレーターユニットは無音状態では完全に止まっており、Polyノブを上げていくことで、それぞれのオシレーターは待機状態から動作を始めます。つまり、待機状態ではエンベロープのループは停止しており、動作状態になることで初めてエンベロープが開始します。  
@@ -66,7 +66,7 @@ Orbitアウトに何も接続されていない場合はMonoモードとなり�
 ### Root
   ルート音を設定します。
 
-    1-5vのレンジ外ではV/OCTのトラッキングが不安定になる場合があります。Chromatic Modeがオンの場合、発音が終わるまでRootの値は反映されません。
+    1-5vのレンジ外ではV/OCTのトラッキングが不安定になる場合があります。Chromatic Modeがオンの場合、Rootの変更は、現在の発音が終了したあとに反映されます
 ### Scale
 使用するスケールとWavetableを設定します。Scaleはノブを回して変更し、Wavetableはノブを押し込みながら回して変更できます。
 <pre>
@@ -126,17 +126,17 @@ CWでRootからG9までの幅が適用されます。
 <pre>
 エンベロープの変更はそれぞれのエンベロープが発音する際に適用されます。
 これを利用して、非常に早いアタックの音、ゆっくりとしたアタック、逆再生の様な音を同時に再生させる事ができます。  
-ノブの左右の20%-35%/85%-100%ではエンベロープのカーブがリニアからログに変更されます。
+ノブの20〜35%、85〜100%付近ではエンベロープのカーブがリニアからログに切り替わります。
 </pre>
 <pre>
 v2.04以降、CCW側の20%では、下記の様なAttackが0の台形エンベロープに変更されてます。
 <img src="data/env.png" wdth = "100%">
 </pre>
 
-### re(L)oad / (R)eload
+### reloAd / reloOd
 Arc/Orbit出力の各オシレーターユニットのパラメーターを強制的に再計算します。  
 <pre>
-monoモードの場合(Orbit出力にケーブルが刺されていない場合)、re(L)oadのゲートインは、全てのオシレーターユニットを再計算します。
+reloOdゲートインにケーブルが刺されていない場合、reloAdに入力されたゲートは、全てのオシレーターユニットを再計算します。
 </pre>
 ### Lock
 エンベロープが最後まで到達しても、音高と音価の計算を行わないスイッチです。
@@ -165,67 +165,20 @@ Wave Editのより詳細な説明や使い方については<a href="https://syn
 
 # MIDI
 ### MIDI Output
-Helical背面のUSB MicroB端子とCuh(MIDI Expander)を接続することで、HelicalはMIDI Deviceとして動作し、ノート情報及び全てのつまみとLockSwitchのCCを出力します。  
+Helical背面のUSB MicroB端子とCuh(MIDI Expander)を接続することで、HelicalはMIDI Deviceとして動作し、ノート情報及び全てのノブとLockSwitchのCCを出力します。  
 <span style="color: red;">
-Cuhを使用せずに接続した場合、過電流などによる故障が発生する可能性があります。その場合、本製品の保証対象外となります。(CuhはUSBHostからの電源をカットしています。)  
-CuhはMIDI Deviceとしてのみ動作します。MIDIHostとして使用したい場合は別途変換を購入してください。</span>  
+Cuhを使用せずにMIDI機器などに接続した場合、過電流などによる故障が発生する可能性があります。その場合、本製品の保証対象外となります。(CuhはUSBHostからの電源をカットしています。)  
+Cuh/HelicalはMIDI Deviceとしてのみ動作します。MIDIHostとして使用したい場合は別途変換を購入してください。</span>  
 
-
-### Note/CC Output
-全てのNote/CCMessageは、CuhのUSB OutおよびTRS MIDI Outから出力されます。  
-SDCardのmidiSetting.txtのmidiChArc・midiChOrbit・midiCCChの数値を変更することで、それぞれの出力Chを変更する事ができます。  
-Orbitにジャックが接続されていない場合、全てのNote情報はmidiChArcから出力されます。
-  
-
-| midiSettingName  | detail |  Range
-| ---- | ---- | ---- |
-| midiChArc |Set Arc MIDI Ch| 1 ~ 127 |
-| midiChOrbit | Set Orbit MIDI | 1 ~ 127 |
-| ccEnable |Set Enable CC| 0 or 1 (Off/On)|
-| midiCCCh | Set CC Ch | 1 ~ 127 |
-| ccPoly | Set Poly CC number | 1 ~ 127 |
-| ccRoot | Set Root CC number | 1 ~ 127 |
-| ccGlide | Set Glide CC number | 1 ~ 127 |
-| ccSpread | Set Spread CC number | 1 ~ 127 |
-| ccHelicity | Set Helicity CC number | 1 ~ 127 |
-| ccWave | Set Wave CC number | 1 ~ 127 |
-| ccEnv | Set Env CC number | 1 ~ 127 |
-| ccLock | Set Lock CC number | 1 ~ 127 |
-| ccCutoff | Set Cutoff CC number | 1 ~ 127 |
-| ccQ | Set Q CC number | 1 ~ 127 |
-| ccIndex | Set Index CC number | 1 ~ 127 |
-| ccFilterType | Set Lp-Hp CC number | 1 ~ 127 |
-| ccLength | Set Length CC number | 1 ~ 127 |
-
-
-### sample
-```setting.txt
-midiChArc 1
-midiChOrbit 2
-midiCCCh 1
-ccPoly 20
-ccRoot 21
-ccGlide 22
-ccSpread 23
-ccHelicity 24
-ccWave 25
-ccEnv 26
-ccLock 27
-ccCutoff 28
-ccQ 29
-ccIndex 30
-ccFilterType 31
-ccLength 32
-```
 
 
 # Calibration Mode
 以下の方法で全てのKnobとCV入力をキャリブレーションする事ができます。  
-1. 電源をオフにし、全てのパッチケーブルを抜いて下さい。  
-2. reloAdボタンと、relOadボタンを押しながら電源を入れ、左のLEDが赤に光ったら手を離して下さい。  
-3. 全てのつまみをCCWの位置に設定します。  
+1. 電源をオフにし、全てのパッチケーブルを抜いてください。  
+2. reloAdボタンと、relOadボタンを押しながら電源を入れ、左のLEDが赤に光ったら手を離してください。  
+3. 全てのノブをCCWの位置に設定します。  
 4. reloAdボタン(左下のボタン)を押して離します。  
-5. 右のLEDが赤く光ったら、全てのつまみをCWの位置に設定します。  
+5. 右のLEDが赤く光ったら、全てのノブをCWの位置に設定します。  
 6. relOadボタン(右下のボタン)を押して離します。  
 キャリブレーションが成功していれば、Helicalが起動します。もし音が出ない場合は1.に戻ってやり直してください。
 
@@ -292,7 +245,7 @@ envMode 1
 
 ## calibration.txt
 calibration.txtは人間が編集するのに適したフォーマットではありませんが、calibration.txtを編集することで、ノブの取る値を反転させたり、値の範囲を指定することが出来ます。  
-通常エディットする必要がないファイルなので、以下を理解した上で、狂気的な目的が無い限り、Helical本体でのキャリブレーションをお勧めします。
+通常エディットする必要がないファイルなので、以下を理解した上で、特別な調整を目的としない限り、このファイルは編集しないことをおすすめします。
 
 数値の範囲は0-65536で、以下の順番で配置されています。  
 ```calibration.txt
@@ -324,10 +277,10 @@ Helicalが起動しない場合以下のチェックをしてください。
 - LEDが赤白黄に光っていますか？(未実装)  
     →waveTableが読み込めていません。オリジナルのwavetableを使っている場合、サンプル数が正しいか/ファイル名が"buf_wt.wav"になっているか確認し、SDカードに再度書き込んでください。
 - Firmwareアップデート後起動しなくなりましたか？  
-    → Firmwareのアップデートをもう一度やってみてください。
+    → Firmwareのアップデートをもう一度行ってください。
 - その他の症状  
     →Daisy(Helical背面のマイコン)の向きを間違えて刺すと故障の原因になります。
-    購入された代理店(直接購入の場合は下のContact)にご連絡下さい。
+    購入された代理店(直接購入の場合は下のContact)にご連絡ください。
 
 # Specification
 Width : 16HP  
