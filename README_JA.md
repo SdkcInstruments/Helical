@@ -263,6 +263,7 @@ Helicalの<a href = "https://github.com/SdkcInstruments/Helical/tree/main/firmwa
 
 DaisySeedのUSBケーブルを抜き、ユーロラックケースの電源を入れて、アップデートが正常に完了したことを確認してください。
 
+v1.XXからv2.XXにアップデートする場合はSD Cardのscale.txtを<a href = "https://github.com/SdkcInstruments/Helical/tree/main/factoryPreset">こちら</a>に置き換えてください。
 
 # Troubleshooting
 Helicalが起動しない場合以下のチェックをしてください。
