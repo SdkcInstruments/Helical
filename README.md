@@ -283,11 +283,10 @@ Only official Helical firmware is supported.
 Writing custom Daisy firmware may damage the unit and void the warranty.
 
 To update:
-1. Download the `.bin` firmware file from [Helical GitHub](https://github.com/SdkcInstruments/Helical/blob/main/beta/helical_firmware_v2.01.bin).
-   - **Don't use right-click > Save As**. Use "Download Raw File" instead.
+1. Download the `.zip` firmware file from [Helical GitHub](https://github.com/SdkcInstruments/Helical/tree/main/firmware).
+   - **Don't use right-click > Save As**. Use "Download Raw File" instead. Then unzip the file.
 2. Visit [Daisy Web Programmer](https://electro-smith.github.io/Programmer/) and follow the instructions.
-3. If the write is successful, you'll see: `Wrote 129828 bytes`
-4. Disconnect USB and power the Eurorack case to boot.
+3. Disconnect USB and power the Eurorack case to boot.
 
 ---
 
