@@ -13,7 +13,7 @@ Helicalは自己回帰型シンセシス(Autoregressive Algorithmic Synthesizer)
 
 
 <div style="text-align: center">
-    <img src="data/helical_panel.png" width="30%">
+    <img src="ManualData/helical_panel.png" width="30%">
 </div>
 
 [![helical demo](http://img.youtube.com/vi/5pqRVQMexkI/0.jpg)](https://www.youtube.com/watch?v=5pqRVQMexkI)
@@ -22,13 +22,13 @@ Helicalは自己回帰型シンセシス(Autoregressive Algorithmic Synthesizer)
 自己回帰型シンセシスはオリジナルの手法で、次のパラメーターを決定する為に、過去の状態を参照するアルゴリズムを持っています。
 Helicalでは、それぞれのオシレーターの過去のピッチ(音高)が次の音の長さ(音価)を決定し、過去の音価が次の音高に影響を与えています。過去から螺旋状(helical)に影響を受けることにより、完全なランダムとは異なる、自然な音響を生成します。
 
-<img src="data/autoregressiveImage.jpg" width="100%">  
+<img src="ManualData/autoregressiveImage.jpg" width="100%">  
 
-<img src="data/CalcTiming.jpg" width="60%">
+<img src="ManualData/CalcTiming.jpg" width="60%">
 
 新しい音高と音価はそれぞれのオシレーターのエンベロープが最後まで到達したタイミングで決定されます。
 
-<img src="data/AutoregressiveSample.jpg" width="100%">
+<img src="ManualData/AutoregressiveSample.jpg" width="100%">
 
 音価と音高の計算の流れは、上図のようになります。
 
@@ -36,13 +36,13 @@ Helicalは既存の音楽のリズムの概念(BPMから音価を決定する)�
 (後述のPolyノブのCVに外部クロックを接続することにより、外部クロックとの同期もできます。)
 
 # Diagrams
-<img src="data/HelicalDiagram.jpg" width="100%">    
+<img src="ManualData/HelicalDiagram.jpg" width="100%">    
 
 
 # Controls and Outputs
 
 <div style="text-align: center">
-    <img src="data/helical_panel.png" width="30%">
+    <img src="ManualData/helical_panel.png" width="30%">
 </div>
 
 ### Arc/Orbit Outputs
@@ -128,7 +128,7 @@ CWでRootからG9までの幅が適用されます。
 </pre>
 <pre>
 v2.04以降、CCW側の20%では、下記の様なAttackが0の台形エンベロープに変更されてます。
-<img src="data/env.png" wdth = "100%">
+<img src="ManualData/env.png" wdth = "100%">
 </pre>
 
 ### reloAd / reloOd
@@ -144,7 +144,7 @@ reloOdゲートインにケーブルが刺されていない場合、reloAdに�
 Synthesis Technologyの<a href="https://synthtech.com/waveedit/">Wave Edit</a>を使用して、オリジナルのwavetableのプリセットを作る事ができます。
 
 
-<img src="data/WaveEdit.jpg" width="100%">  
+<img src="ManualData/WaveEdit.jpg" width="100%">  
 上図の様に、上から8個のwavetableごとにHelicalの一つのプリセットになります。
 書き出したwavファイルをbuf_wt.wavという名前にリネームして、SDカードに上書きしてください。
 

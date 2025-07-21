@@ -14,7 +14,7 @@ It continuously generates new phrases and sonic patterns using an autoregressive
 Each oscillator is equipped with its own sequencer, wavetable oscillator, envelope generator, and VCA.  
 Users can customize scales, LED colors, and wavetables using an SD card and dedicated editors.
 
-![Helical Panel](data/helical_panel.png)
+![Helical Panel](ManualData/helical_panel.png)
 
 [Watch the demo on YouTube](https://www.youtube.com/watch?v=5pqRVQMexkI)
 
@@ -26,13 +26,13 @@ This synthesis method uses past values to determine the next parameters.
 In Helical, each oscillator’s previous pitch determines the next duration, and the previous duration influences the next pitch.  
 This helical influence from past to future creates natural-sounding sequences rather than random ones.
 
-![Concept](data/autoregressiveImage.jpg)
+![Concept](ManualData/autoregressiveImage.jpg)
 
-![Calculation Timing](data/CalcTiming.jpg)
+![Calculation Timing](ManualData/CalcTiming.jpg)
 
 New pitch and duration are calculated when the oscillator's envelope finishes.  
 
-![Autoregressive Flow](data/AutoregressiveSample.jpg)
+![Autoregressive Flow](ManualData/AutoregressiveSample.jpg)
 
 Unlike conventional rhythm concepts based on BPM, Helical explores new rhythmic expressions.  
 (You can sync with external clocks by sending them to the CV input of the **Poly** knob.)
@@ -41,13 +41,13 @@ Unlike conventional rhythm concepts based on BPM, Helical explores new rhythmic 
 
 # System Diagram
 
-![Block Diagram](data/HelicalDiagram.jpg)
+![Block Diagram](ManualData/HelicalDiagram.jpg)
 
 ---
 
 # Controls and Outputs
 
-![Panel](data/helical_panel.png)
+![Panel](ManualData/helical_panel.png)
 
 ### Arc / Orbit Outputs
 
@@ -131,7 +131,7 @@ Sets attack/decay ratio of the envelope.
 - Allows varied textures like fast attack, slow fade, reversed envelopes.
 - At 20–35% and 85–100% of knob position, curve changes to logarithmic.
 
-![Envelope Curve](data/env.png)
+![Envelope Curve](ManualData/env.png)
 
 ### reloAd / reloOd
 Manually re-calculate parameters for oscillator units.
@@ -147,7 +147,7 @@ Disables pitch/duration calculation when envelopes complete.
 
 Use [Wave Edit](https://synthtech.com/waveedit/) to create custom wavetable presets.
 
-![WaveEdit](data/WaveEdit.jpg)
+![WaveEdit](ManualData/WaveEdit.jpg)
 
 - Each group of 8 wavetables = 1 Helical preset
 - Rename your `.wav` file to `buf_wt.wav` and place it on the SD card
