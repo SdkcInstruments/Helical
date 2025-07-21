@@ -14,9 +14,12 @@ It continuously generates new phrases and sonic patterns using an autoregressive
 Each oscillator is equipped with its own sequencer, wavetable oscillator, envelope generator, and VCA.  
 Users can customize scales, LED colors, and wavetables using an SD card and dedicated editors.
 
-![Helical Panel](ManualData/helical_panel.png)
+<div style="text-align: center">
+    <img src="ManualData/helical_panel.png" width="30%">
+</div>
+<div style="text-align: center">
 
-[Watch the demo on YouTube](https://www.youtube.com/watch?v=5pqRVQMexkI)
+[![helical demo](http://img.youtube.com/vi/5pqRVQMexkI/0.jpg)](https://www.youtube.com/watch?v=5pqRVQMexkI)
 
 ---
 
@@ -47,7 +50,10 @@ Unlike conventional rhythm concepts based on BPM, Helical explores new rhythmic 
 
 # Controls and Outputs
 
-![Panel](ManualData/helical_panel.png)
+<div style="text-align: center">
+    <img src="ManualData/helical_panel.png" width="30%">
+</div>
+<div style="text-align: center">
 
 ### Arc / Orbit Outputs
 
