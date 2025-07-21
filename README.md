@@ -1,200 +1,363 @@
+# Helical Firmware Manual v2.08
 
-# Helical
 
-Helical is a 16-voice polyphonic Autoregressive Algorithmic Synthesizer.  
-With Autoregressive Synthesis/Sequence, it continuously generates new phrases.  
-Each of the 16 voices consists of a sequencer, wavetable oscillator, envelope generator, and VCA.  
-Users can change the scale and LED color with a dedicated editor, and wavetables can be modified using Synthesis Technology's WaveEdit.  
+This version introduces MIDI features for the "Cuh" MIDI expander, along with new features such as dynamics settings and calibration.  
+Refer to the [ChangeLog](#changelog-v208) and see the [Update firmware](#update-firmware) section at the bottom of this page for instructions.
 
-<div style="text-align: center">
-    <img src="ManualData/helical_panel.png" width="30%">
-</div>
-<div style="text-align: center">
+---
 
-[![helical demo](http://img.youtube.com/vi/5pqRVQMexkI/0.jpg)](https://www.youtube.com/watch?v=5pqRVQMexkI)
+# Helical Overview
 
-</div>
+**Helical** is a 16-voice polyphonic synthesizer based on **Autoregressive Algorithmic Synthesis**.  
+It continuously generates new phrases and sonic patterns using an autoregressive model.
 
-<div style="page-break-before:always"></div>
+Each oscillator is equipped with its own sequencer, wavetable oscillator, envelope generator, and VCA.  
+Users can customize scales, LED colors, and wavetables using an SD card and dedicated editors.
 
-# Autoregressive Synthesis/Sequence
-Autoregressive Synthesis/Sequence is an original method that refers to its past parameters to determine the next parameters.  
-In Helical, the past pitch of each oscillator affects the next duration, and the past duration affects the next pitch. By connecting to the past in a helical relationship, the sound is not completely random, but rather generates an organic sound.  
+![Helical Panel](data/helical_panel.png)
 
-<img src="ManualData/autoregressiveImage.jpg" width="100%">  
+[Watch the demo on YouTube](https://www.youtube.com/watch?v=5pqRVQMexkI)
 
-<img src="ManualData/CalcTiming.jpg" width="60%">
+---
 
-New pitch and duration calculations when the envelope reaches its end.
+# Autoregressive Synthesis / Sequencing
 
-<img src="ManualData/AutoregressiveSample.jpg" width="100%">
+This synthesis method uses past values to determine the next parameters.  
+In Helical, each oscillator’s previous pitch determines the next duration, and the previous duration influences the next pitch.  
+This helical influence from past to future creates natural-sounding sequences rather than random ones.
 
-The progression of autoregression generates the envelope and pitch flow shown in the figure above.
+![Concept](data/autoregressiveImage.jpg)
 
-Helical is designed to generate new rhythms beyond existing music theory by calculating duration independent of tempo and BPM. (It is possible to synchronize to an external clock by using the Poly function.)
+![Calculation Timing](data/CalcTiming.jpg)
 
-<div style="page-break-before:always"></div>
+New pitch and duration are calculated when the oscillator's envelope finishes.  
 
-# Diagrams
-<img src="ManualData/HelicalDiagram.jpg" width="100%">  
+![Autoregressive Flow](data/AutoregressiveSample.jpg)
 
-<div style="page-break-before:always"></div>
+Unlike conventional rhythm concepts based on BPM, Helical explores new rhythmic expressions.  
+(You can sync with external clocks by sending them to the CV input of the **Poly** knob.)
 
-# Controls
+---
 
-<div style="text-align: center">
-    <img src="ManualData/HelicalPanel.png" width="30%">
-</div>
+# System Diagram
+
+![Block Diagram](data/HelicalDiagram.jpg)
+
+---
+
+# Controls and Outputs
+
+![Panel](data/helical_panel.png)
+
+### Arc / Orbit Outputs
+
+Helical splits its output into Arc and Orbit for every 8 voices.
+
+- If Orbit is unpatched, Arc outputs all voices in Mono mode.
 
 ### Poly
-* Set the polyphony of each Arc/Orbit output from 0 to 8.  
-Lowering the Poly setting rapidly does not immediately silence the sound; the unit processing stops when each unit's envelope reaches end. When raising the Poly, the envelope starts when the unit turns on.  
-By utilizing this feature, you can achieve synchronization with an external clock by setting the Poly knob to 0 and connecting a Clock or Gate to the CV in. In this case, the Helicity knob functions like a Clock Divider.   
-Sending very short Clock/Gate signals will make it easier to understand the synchronization with the external source. Additionally, passing the Clock/Gate signal through an attenuverter first allows you to control the number of notes played.
+Sets the number of active voices (0–8 for polyphonic, 0–16 in Mono mode).
 
+- Voices keep playing until their envelopes finish, even if the Poly knob is turned to CCW (min).
+- Oscillators are inactive by default. Increasing the Poly value brings them into an active state.
+- If Poly is set to 0 and an external clock is connected to its CV input, Helical syncs to it.  
+  In this mode, the **Helicity** knob acts as a clock divider.
 
 ### Root
-* Set the root note. V/OCT tracking may become unstable outside the 1-5V range.
-### Scale
-* Sets the scale to be used. You can change the wavetable preset by turning the knob while pressing the encoder in.  
-* By pressing and holding the reloAd button (the reload button on the bottom left) while pushing and turning the Scale knob, you can set the default volume.
-* By pressing and holding the relOad button (the reload button on the bottom right) while pushing and turning the Scale knob, you can set the FineTune.
-* By pressing and holding relOad or reloAd and then pushing and turning the Scale knob, you can adjust the maximum brightness of the LED.   
-  These settings will be carried over to the next startup.  
+Sets the root note.
 
-  
-The default scale presets are below.  
+- Outside the 1–5V range, 1V/Oct tracking may become unstable.
+- In **Chromatic Mode**, root changes take effect after the current note finishes.
 
-    0,Major(R)  
-    1,Natural Minor (R)  
-    2,Harmonic Minor(R)  
-    3,Melodic Minor(R)  
-    4,Dorian(R)  
-    5,Major Pentatonic(R)  
-    6,Minor Pentatonic(R)  
-    7,Chromatic Scale  
-    8,1M7(R)  
-    9,4M7(R)  
-    (R) means Root Emphasize is on 
-    When Root Emphasize is turned on, only the Root note and the fifth note are selected in the lowest octave.  
-    This function helps maintain the sense of scale.   
-    Please refer to the Scale Editor for more details.
+### Scale / Wavetable
+
+- Turn the knob to change scale.
+- Press + turn to change wavetable.
+- If **Lock** is ON (switch up), the scale changes instantly.
+- If OFF (switch down), changes apply after the note ends.
+
+**Default scale presets:**
+```
+0: Major(R)
+1: Lydian(R)
+2: Mixolydian(R)
+3: Major Pentatonic(R)
+4: Natural Minor(R)
+5: Dorian(R)
+6: Phrygian(R)
+7: Minor Pentatonic(R)
+8: I M7(R)
+9: II m7(R)
+10: III m7(R)
+11: IV M7(R)
+12: V 7(R)
+13: VI m7(R)
+14: Whole tone
+15: Chromatic
+```
+(R) = Root Emphasize enabled
+
+When Root Emphasize is on, the lowest octave uses only root-related notes. Higher octaves follow the full scale.
 
 ### Glide
-* Set the transition time when changing to the next pitch. Applies to all pitch changes, including changes in Scale and Root.
+Sets portamento between notes.
 
-<div style="page-break-before:always"></div>
+- When Helicity is high: glide time = 0–1s
+- When Helicity is low: glide time depends on the current note length
+
+Applies to pitch changes like Scale/Root/Reload.
 
 ### Spread
-* Set the width of change when converting from duration to pitch. With CCW, the pitch becomes only Root, and with CW, it changes from the frequency of Root to G9 (12543.9Hz).
+Sets pitch range when calculating from duration.
+
+- CCW: Only root note
+- CW: Range up to G9
 
 ### Wave
-* Morphing Wavetables within a preset. Interpolation between wavetables is performed, allowing smooth transitions between tables.
+Smoothly morphs between wavetable frames in a preset.
 
 ### Helicity
-* Determines the multiplier when converting from pitch to duration.  
-The duration is determined by (√pitch) * Helical, with a change range of 0.002-300 times.
+Sets the scaling factor for converting pitch into duration.
+
+```
+Duration = sqrt(Pitch) * Helicity
+Range: 0.002x to 300x
+```
 
 ### Env
-* Sets the ratio of attack and decay for the envelope.  
-At both edges of the knob, the curve changes from linear to log curve.  
-Envelope changes are not applied until the envelope reaches its end.
+Sets attack/decay ratio of the envelope.
 
-### reloAd / relOad
-* Forcibly recalculates the parameters for each Unit in the Arc and Orbit channels.  
-Regardless of the number of polyphonies, the duration and pitch of all units are recalculated.  
-Patching 5V Gate enables external control.
+- Settings apply per-note when a new envelope triggers.
+- Allows varied textures like fast attack, slow fade, reversed envelopes.
+- At 20–35% and 85–100% of knob position, curve changes to logarithmic.
+
+![Envelope Curve](data/env.png)
+
+### reloAd / reloOd
+Manually re-calculate parameters for oscillator units.
+
+- If **reloOd** input is unpatched, triggers on **reloAd** apply to all oscillators.
 
 ### Lock
-* Even when the envelope reaches end, the duration and pitch are not recalculated, and the current state is looped.   
-Patching the 5V Gate will lock when the Gate is HIGH.
+Disables pitch/duration calculation when envelopes complete.
 
-<div style="page-break-before:always"></div>
+---
 
-# Function
-### Volume Edit
-* By pressing and holding the Scale knob and the left reload button, then turning the Scale knob, you can adjust the default volume.   
-This change is saved to the SD card and will persist after the device is restarted.
+# Wavetable Editing
 
-### Fine Tuning
-* By pressing and holding the Scale knob and the right reload button, then turning the Scale knob, you can adjust the fine tuning.   
-This change is saved to the SD card and will persist after the device is restarted.
+Use [Wave Edit](https://synthtech.com/waveedit/) to create custom wavetable presets.
 
-### LED Brightness
-* By pressing and holding the Scale knob and the right and light reload button, then turning the Scale knob, you can adjust the LED Brightness.   
-This change is saved to the SD card and will persist after the device is restarted.  
-If your case doesn't provide enough power, you can reduce power consumption by adjusting the LED brightness.
+![WaveEdit](data/WaveEdit.jpg)
 
-<div style="page-break-before:always"></div>
+- Each group of 8 wavetables = 1 Helical preset
+- Rename your `.wav` file to `buf_wt.wav` and place it on the SD card
 
-# Wavetable Edit
-Synthesis Technology's <a href="https://synthtech.com/waveedit/">Wave Edit</a> can be used to create original presets of wavetables.  
-Rename the exported wav file to buf_wt.wav and write it to the SD card.
+**Requirements for custom wave files:**
+- 256 samples per table
+- 64 tables
+- Total: 16384 samples
 
-<img src="ManualData/WaveEdit.jpg" width="100%">  
+---
 
-As described above, each of the 8 tables is processed as a single preset on Helical.  
+# Scale Editing
+Use the [Scale Editor](https://github.com/SdkcInstruments/Helical/tree/main/ScaleEditor) on GitHub.
 
+---
 
-For more information on how to use Wave Edit, please refer to the  <a href="https://synthtech.com/waveedit/">SynthsisTechnology page</a>.  
+# MIDI Output
 
-If you are using other software, please create a wav file with a table size of 256sample, 64 types, total 16384samle, and rename it buf_wt.wav and write it to the SD card.  
-48kHz/24bit is recommended.
+By connecting the USB Micro-B port to **Cuh (MIDI Expander)**, Helical acts as a USB MIDI device and sends:
+- Note messages
+- CC messages for all knobs and Lock switch
 
+⚠️ **Do not connect Helical directly to MIDI gear without using Cuh.** This may cause overcurrent and void the warranty.  
+Cuh blocks power from USB Hosts for safety.
 
-# Scale Edit
-Please refer to the <a href = "https://github.com/SdkcInstruments/Helical/tree/main/ScaleEditor">ScaleEditor</a> page.
+Helical/Cuh act as MIDI **Devices** only. To use with MIDI Hosts, an external converter is required.
 
-<div style="page-break-before:always"></div>
+---
 
-# Update firmware
-Helical does not support anything other than the official firmware.  
-Any malfunctions that occur as a result of writing unofficial firmware will not be covered by the warranty.
+# Calibration Mode
 
+To calibrate all knobs and CV inputs:
+1. Turn off power and disconnect all patch cables.
+2. Hold **reloAd** and **relOad** buttons while powering on. Release when left LED turns red.
+3. Turn all knobs fully CCW.
+4. Press and release **reloAd** (bottom-left button).
+5. When right LED turns red, turn all knobs fully CW.
+6. Press and release **relOad** (bottom-right button).
 
-Please download the firmware (bin file) from Helical's <a href = "https://github.com/SdkcInstruments/Helical/tree/main/firmware">GitHub page</a>.  
-Go to the <a href = "https://electro-smith.github.io/Programmer/">Daisy Web Programmer</a> page and follow the instructions provided to upload the firmware.  
-After unplugging the USB cable from DaisySeed, turn on the power to the Eurorack case and check to see if the firmware update has been carried out correctly.  
-For Helical units with a serial number on the back from 6 to 55, the shipping firmware version is v1.11.
+If calibration succeeds, Helical boots normally. Otherwise, retry from step 1.
 
+**For accurate V/OCT calibration:**
+- Send 0V to RootIn during step 3, and 5V during step 5.
 
-# Specification
-Width : 16HP  
-Max Depth: 40mm  
-Maximum current draw:
-* 240mA @12V
-* 12mA @-12V
-  
-Audio codec: 48kHz/24bit  
-Control rate: audio-rate for the Helicity knob, 1kHz for the another CV inputs.  
-CV input range: +/- 5V (depends on the knob position)
+---
 
-# Roadmap
-* Support for 8+ wavetable presets from multiple wav files.
-* Support for 10+ scale presets.
-* Support for Micro Tuning.
+# Hidden Settings
 
-# Acknowledgment
-Without the help of the following people, Helical would not have been completed.  
-I offer my heartfelt thanks
-* <a href = "https://hananosuke.jp/">Hananosuke Takimoto</a>
-* Tanipoyo
-* <a href = "https://www.bofo.jp/">Yoshimi Tajima(Cloud Design on the panel)</a>
+## Dynamics Setting
+Assigns random volume per note within a defined range.
 
-#  Warranty
+### How to enter:
+1. Double-click the **Scale knob** to enter Dynamic Setting Mode (LED blinks fast).
+2. Hold **reloAd** + turn Scale knob = set volume center.
+3. Hold **relOad** + turn Scale knob = set volume width.
+4. Click Scale knob to exit.
 
-Sdkc Instruments provides a one-year warranty for this product, ensuring it is free from defects in materials and construction from the date of purchase (proof of purchase/invoice required).
+You can also edit `volCenter` and `volWidth` (0–100%) in `setting.txt` on the SD card.
 
-Malfunctions caused by incorrect power supply voltages, backward or reversed Eurorack bus board cable connections, misuse of the product, removing knobs, changing faceplates, unauthorized modifications (including unofficial firmware updates), or any other causes determined by Sdkc Instruments to be the fault of the user are not covered by this warranty, and normal service rates will apply.
+MIDI velocities are mapped from the internal volume range to 0–127.
 
-Damage caused by exposure to extreme environmental conditions (such as excessive heat, moisture, or humidity) is also not covered by this warranty.
+## Chromatic Mode
+Hold **Scale knob** while powering on to toggle.  
+On = pitch steps in semitones.  
+Off = pitch changes linearly with Root knob.
 
-For warranty service, please contact the retailer where you purchased the product. In the case of a defect covered by this warranty, Sdkc Instruments will repair or replace the product. 
+You can also set this in `setting.txt`:
+```
+chromaticMode 1   # on
+chromaticMode 0   # off
+```
 
-Sdkc Instruments shall not be liable for any injury to persons or damage to property resulting from the use or misuse of this product. For any questions, please contact sdkc.store[a]gmail.com or your dealer.
+## Volume Edit
+Hold **reloAd** + press and turn Scale knob = set master volume.
 
+## Fine Tune
+Hold **relOad** + press and turn Scale knob = set fine tuning.
+
+---
+
+# SD Card Edits
+
+## setting.txt
+Most parameters can be set from the panel, but fine-tuning is possible by editing `setting.txt`.
+
+If something breaks after editing, restore the `factoryPreset` file.
+
+| Setting         | Description            | Range             |
+|-----------------|------------------------|-------------------|
+| finetune        | Fine tuning            | -32767 ~ 32767    |
+| scale           | Default scale index    | 0 ~ 9             |
+| wavetable       | Default wavetable      | 0 ~ 9             |
+| volCenter       | Dynamics center        | 0 ~ 100 (%)       |
+| volWidth        | Dynamics width         | 0 ~ 100 (%)       |
+| chromaticMode   | Chromatic Mode toggle  | 0 (off) / 1 (on)  |
+| masterVol       | Master volume          | 0 ~ 65535         |
+| envMode         | Envelope behavior      | 0 (old) / 1 (new) |
+
+### Sample:
+```txt
+finetune 0
+scale 8
+wavetable 0
+volCenter 46
+volWidth 35
+chromaticMode 1
+masterVol 43007
+envMode 1
+```
+
+## calibration.txt
+Contains raw calibration values for knobs. Usually doesn't need to be edited manually.
+
+If needed, the format is:
+```txt
+poly_min root_min glide_min ... length_min poly_max root_max ... length_max
+```
+
+Each value = 0 ~ 65536.  
+Note: `min > max` is the correct form (they are inverted internally).
+
+---
+
+# Update Firmware
+
+Only official Helical firmware is supported.  
+Writing custom Daisy firmware may damage the unit and void the warranty.
+
+To update:
+1. Download the `.bin` firmware file from [Helical GitHub](https://github.com/SdkcInstruments/Helical/blob/main/beta/helical_firmware_v2.01.bin).
+   - **Don't use right-click > Save As**. Use "Download Raw File" instead.
+2. Visit [Daisy Web Programmer](https://electro-smith.github.io/Programmer/) and follow the instructions.
+3. If the write is successful, you'll see: `Wrote 129828 bytes`
+4. Disconnect USB and power the Eurorack case to boot.
+
+---
+
+# Troubleshooting
+
+- **LED flashing red/green/blue:**
+  - SD card not detected. Check insertion.
+  - Try replacing contents with factory preset files.
+
+- **LED flashing red/white/yellow:** (Not implemented)
+  - Wavetable load failure. Ensure file is named `buf_wt.wav` and has valid format.
+
+- **Not booting after firmware update:**
+  - Reflash the firmware.
+
+- **Other issues:**
+  - Daisy may be inserted backward. Contact your dealer or us.
+
+---
+
+# Specifications
+
+- Width: 16HP
+- Max Depth: 40mm
+- Power: 240mA @+12V, 12mA @-12V
+- Audio Codec: 48kHz / 24bit
+- Control Rate:
+  - Helicity CV: audio-rate
+  - Others: 1kHz
+- CV Input Range: ± 5V (range affected by knob position)
+
+---
+
+# Changelog (v2.08)
+
+1. Added MIDI Output and CV modulation support via **Cuh** Expander. [See MIDI](#midi-output)
+2. Modified envelope behavior. [See Env](#env)
+3. Added **Dynamics Setting**. [See Dynamics](#dynamics-setting)
+4. Expanded max scales to 16. Improved live scale switching. [See Scale](#scale--wavetable)
+5. Added **Calibration Mode**. [See Calibration](#calibration-mode)
+6. Changed **Glide** behavior. [See Glide](#glide)
+7. Improved SD card error handling. [See Troubleshooting](#troubleshooting)
+8. Removed brightness setting.
+9. Various minor fixes.
+
+---
+
+# Acknowledgments
+
+Helical would not exist without the support of the following individuals:
+
+- [Hananosuke Takimoto](https://hananosuke.jp/)
+- Tanipoyo
+- [Yoshimi Tajima](https://www.bofo.jp/) (Panel design)
+
+---
+
+# Warranty
+
+Sdkc Instruments warrants this product to be free of defects in materials and manufacturing for **1 year from date of purchase** (proof required).
+
+The warranty does not cover:
+- Incorrect power supply voltages
+- Reversed Eurorack bus connection
+- Misuse or abuse
+- Knob or faceplate removal
+- Unauthorized firmware modifications
+- Environmental damage (e.g., heat, humidity)
+
+If warranty service is needed, contact your dealer. If covered, Sdkc Instruments will repair or replace the product.
+
+Sdkc Instruments is not liable for any injury or damage resulting from use or misuse of the product.
+
+---
 
 # Contact
-Please contact support at the following address. Replace "a" with "@" in the address.
+For inquiries, please email:  
+**sdkc.store[a]gmail.com** (replace `[a]` with `@`)
 
-sdkc.store[a]gmail.com
