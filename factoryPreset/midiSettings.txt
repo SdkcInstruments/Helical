@@ -1,0 +1,16 @@
+midiChArc 1
+midiChOrbit 2
+midiCCCh 1
+ccPoly 20
+ccRoot 21
+ccGlide 22
+ccSpread 23
+ccHelicity 24
+ccWave 25
+ccEnv 26
+ccLock 27
+ccCutoff 28
+ccQ 29
+ccIndex 30
+ccFilterType 31
+ccLength 32
