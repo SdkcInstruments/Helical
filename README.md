@@ -287,6 +287,8 @@ To update:
    - **Don't use right-click > Save As**. Use "Download Raw File" instead. Then unzip the file.
 2. Visit [Daisy Web Programmer](https://electro-smith.github.io/Programmer/) and follow the instructions.
 3. Disconnect USB and power the Eurorack case to boot.
+   
+When updating from v1.XX to v2.XX, please replace the scale.txt file on the SD card with the one found <a href = "https://github.com/SdkcInstruments/Helical/tree/main/factoryPreset">here</a>.
 
 ---
 
