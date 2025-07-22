@@ -186,6 +186,7 @@ Helical/Cuh act as MIDI **Devices** only. To use with MIDI Hosts, an external co
 # Calibration Mode
 
 To calibrate all knobs and CV inputs:
+If you are using the Addition, please make sure to calibrate its knobs.
 1. Turn off power and disconnect all patch cables.
 2. Hold **reloAd** and **relOad** buttons while powering on. Release when left LED turns red.
 3. Turn all knobs fully CCW.
