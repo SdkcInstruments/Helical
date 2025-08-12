@@ -17,7 +17,7 @@ AdditionはHelicalを拡張するエクスパンダーです。
 # Controls and Outputs
 
 <div style="text-align: center">
-    <img src="ManualData/Addition_panel_Image.png" width="100%">
+    <img src="ManualData/Addition_panel_Image.png" width="50%">
 </div>
 
 ### Cutoff
