@@ -16,9 +16,6 @@ CuhはMIDI Deviceとしてのみ動作します。MIDIHostとして使用した�
 
 ---
 # Controls and Outputs
-<div style="text-align: center">
-    <img src="ManualData/Addition_panel_Image.png" width="10%">
-</div>
 
 ### MIDI Output(USB-C/TRS-MIDI)
 Helicalのノート情報及び、ノブのCC信号を出力します。 
