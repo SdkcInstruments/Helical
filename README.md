@@ -284,9 +284,9 @@ Only official Helical firmware is supported.
 Writing custom Daisy firmware may damage the unit and void the warranty.
 
 To update:
-1. Download the `.zip` firmware file from [Helical GitHub](https://github.com/SdkcInstruments/Helical/tree/main/firmware).
-   - **Don't use right-click > Save As**. Use "Download Raw File" instead. Then unzip the file.
-2. Visit [Daisy Web Programmer](https://electro-smith.github.io/Programmer/) and follow the instructions.
+1. Download the `.zip` firmware file from [here](https://github.com/SdkcInstruments/Helical/raw/refs/heads/main/firmware/Helical_firmware_v2.08.zip). Then unzip the file.
+   - **If you download from the firmware page, don’t use “Right-click > Save As.” Instead, click “Download Raw File,” then unzip the file.**
+2. Visit [Daisy Web Programmer](https://electro-smith.github.io/Programmer/) and follow the instructions, using the `.bin` file you unzipped in step 1.
 3. Disconnect USB and power the Eurorack case to boot.
    
 When updating from v1.XX to v2.XX, please replace the scale.txt file on the SD card with the one found <a href = "https://github.com/SdkcInstruments/Helical/tree/main/factoryPreset">here</a>.

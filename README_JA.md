@@ -257,10 +257,10 @@ minとmaxは最終的な処理で反転されるので、minの方が値が大�
 Helicalは公式のファームウェア以外の対応は行いません。  
 非公式のDaisyのファームウェアを書き込んだことによって起きた故障は、保証の対象外となります。
 
-Helicalの<a href = "https://github.com/SdkcInstruments/Helical/tree/main/firmware">GitHubのページ</a>からファームウェア（zipファイル）をダウンロードし解凍しててください。  
-**その際右クリックで保存ではなく、 右上のDownload Raw Fileからダウンロードを行なってください。**  
+<a href = "https://github.com/SdkcInstruments/Helical/raw/refs/heads/main/firmware/Helical_firmware_v2.08.zip">Helical firmware</a>からファームウェア（`.zip`ファイル）をダウンロードし解凍しててください。  
+**Githubのファームウェアページからダウンロードする際は右クリックで保存ではなく、 右上のDownload Raw Fileからダウンロードを行なってください。**  
 
-<a href = "https://electro-smith.github.io/Programmer/">Daisy Web Programmer</a> のページに移動し、記載されている手順に従ってファームウェアをアップロードしてください。  
+<a href = "https://electro-smith.github.io/Programmer/">Daisy Web Programmer</a> のページに移動し、記載されている手順に従って先ほど解凍した`.bin`ファイルを使用し、ファームウェアをアップロードしてください。  
 
 DaisySeedのUSBケーブルを抜き、ユーロラックケースの電源を入れて、アップデートが正常に完了したことを確認してください。
 
