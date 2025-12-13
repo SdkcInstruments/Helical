@@ -9,7 +9,7 @@ Helicalは自己回帰型シンセシス(Autoregressive Algorithmic Synthesizer)
 自己回帰型シンセシスにより、無限に新しいフレーズや音響を生み出し続けます。  
 各オシレーターは、シーケンサー、Wavetableオシレーター、エンベロープジェネレーター、VCAを備えており、独立して動作します。
 ユーザーはパネル前面のSDカードに書き込むことで、スケール、LEDの色を専用のエディターで変更する事ができ、Wavetableも自由に変更可能です。
-
+ 
 
 <div style="text-align: center">
     <img src="ManualData/helical_panel.png" width="30%">
