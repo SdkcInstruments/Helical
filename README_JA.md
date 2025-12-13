@@ -1,7 +1,6 @@
-# Manual v2.08 
-本バージョンでは、「Cuh」を使用するためのMIDI機能が追加されました。  
-その他、ダイナミクスの設定/キャリブレーションなど様々な機能が追加されています。  
-[ChangeLog](#changelogv208)  
+# Manual v2.09(12.13.2025 update)
+MIDI CCに関する修正を行いました。 
+[ChangeLog](#changelogv209)  
 アップデートの方法については本ページ末尾の[『Update firmware』](#update-firmware)セクションを参照してください。
 
 
@@ -291,7 +290,10 @@ Audio codec: 48kHz/24bit
 Control rate: audio-rate for the Helicity knob, 1kHz for the another CV inputs.  
 CV input range: +/- 5V (depends on the knob position)
 
-# ChangeLog(v2.08)
+# ChangeLog
+## v2.09
+1. ccEnableを0にしてもccが送られてしまう問題を修正しました。
+## v2.08
 1. <b>Cuh</b>(MIDI Expander)の為MIDI Output/Scale・Wavetableモジュレーション機能を追加しました。[詳細](#midi)
 2. Envelopeの挙動を変更しました。[詳細](#env)
 3. Dynamics Settingを追加しました。[詳細](#dynamics-setting)

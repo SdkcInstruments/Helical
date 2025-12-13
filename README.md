@@ -1,8 +1,7 @@
-# Helical Firmware Manual v2.08
-
-
-This version introduces MIDI features for the "Cuh" MIDI expander, along with new features such as dynamics settings and calibration.  
-Refer to the [ChangeLog](#changelog-v208) and see the [Update firmware](#update-firmware) section at the bottom of this page for instructions.
+# Helical Firmware Manual v2.09(12.13.2025 update)
+MIDI CC-related corrections have been implemented.
+[ChangeLog](#changelog).  
+See the [Update firmware](#update-firmware) section at the bottom of this page for instructions.
 
 ---
 
@@ -17,7 +16,7 @@ Users can customize scales, LED colors, and wavetables using an SD card and dedi
 <div style="text-align: center">
     <img src="ManualData/helical_panel.png" width="30%">
 </div>
-<div style="text-align: center">
+
 
 [![helical demo](http://img.youtube.com/vi/5pqRVQMexkI/0.jpg)](https://www.youtube.com/watch?v=5pqRVQMexkI)
 
@@ -53,7 +52,6 @@ Unlike conventional rhythm concepts based on BPM, Helical explores new rhythmic 
 <div style="text-align: center">
     <img src="ManualData/helical_panel.png" width="30%">
 </div>
-<div style="text-align: center">
 
 ### Arc / Orbit Outputs
 
@@ -323,7 +321,11 @@ When updating from v1.XX to v2.XX, please replace the scale.txt file on the SD c
 
 ---
 
-# Changelog (v2.08)
+# Changelog
+## v2.09
+1. Fixed an issue where CC messages were still being sent even when ccEnable was set to 0.
+
+## v2.08
 
 1. Added MIDI Output and CV modulation support via **Cuh** Expander. [See MIDI](#midi-output)
 2. Modified envelope behavior. [See Env](#env)

@@ -56,10 +56,10 @@ Orbitにジャックが接続されていない場合、全てのノート情報
 
 | midiSettingName  | detail |  Range
 | ---- | ---- | ---- |
-| midiChArc |Set Arc MIDI Ch| 1 ~ 127 |
-| midiChOrbit | Set Orbit MIDI | 1 ~ 127 |
+| midiChArc |Set Arc MIDI Ch| 1 ~ 16 |
+| midiChOrbit | Set Orbit MIDI Ch | 1 ~ 16 |
 | ccEnable |Set Enable CC| 0 or 1 (Off/On)|
-| midiCCCh | Set CC Ch | 1 ~ 127 |
+| midiCCCh | Set CC Ch | 1 ~ 16 |
 | ccPoly | Set Poly CC number | 1 ~ 127 |
 | ccRoot | Set Root CC number | 1 ~ 127 |
 | ccGlide | Set Glide CC number | 1 ~ 127 |
@@ -93,6 +93,7 @@ ccQ 29
 ccIndex 30
 ccFilterType 31
 ccLength 32
+ccEnable 0
 ```
 
 ---
