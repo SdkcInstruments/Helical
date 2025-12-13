@@ -76,10 +76,10 @@ You can configure the output channels by editing the `midiSetting.txt` file on t
 
 | Parameter    | Description                 | Range    |
 | ------------ | --------------------------- | -------- |
-| midiChArc    | Set Arc MIDI Channel        | 1 \~ 127 |
-| midiChOrbit  | Set Orbit MIDI Channel      | 1 \~ 127 |
+| midiChArc    | Set Arc MIDI Channel        | 1 \~ 16 |
+| midiChOrbit  | Set Orbit MIDI Channel      | 1 \~ 16 |
 | ccEnable     | Enable/Disable CC Output    | 0 or 1   |
-| midiCCCh     | Set CC Output Channel       | 1 \~ 127 |
+| midiCCCh     | Set CC Output Channel       | 1 \~ 16 |
 | ccPoly       | CC Number for Poly knob     | 1 \~ 127 |
 | ccRoot       | CC Number for Root knob     | 1 \~ 127 |
 | ccGlide      | CC Number for Glide knob    | 1 \~ 127 |
@@ -113,6 +113,7 @@ ccQ 29
 ccIndex 30
 ccFilterType 31
 ccLength 32
+ccEnable 0
 ```
 
 ---
